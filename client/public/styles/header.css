@@ -1,3 +1,13 @@
+body{
+    background-image: url('../images/background.png');
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin:auto;
+}
+
 header {
     background-color: rgb(66, 75, 92);
     width: 100%;

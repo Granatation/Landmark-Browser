@@ -1,0 +1,73 @@
+.form-section{
+    position: relative;
+    border-radius: 20px;
+    background-color: rgb(66, 75, 92);
+    width:500px;
+    margin: auto;
+    margin-top: 120px;
+    height:500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.form-section h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: antiquewhite;
+    text-align: center;
+    padding-top: 20px;
+}
+
+input[type="username"],
+input[type="password"] {
+    background: antiquewhite;
+    padding: 8px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(66, 75, 92);
+    height:20px;
+    display: block;
+    width: 70%;
+    margin: auto; 
+}
+
+label[for="username"],
+label[for="password"] {
+    color: antiquewhite;
+    padding: 20px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    height:20px;
+    display: block;
+    width: 70%;
+    margin: auto; 
+}
+
+.submit{
+    width:90px;
+    height:50px;
+    margin: auto; 
+    margin-top: 40px;
+    display: block;
+    font-size: 20px;
+    color: rgb(66, 75, 92);
+    background: antiquewhite;
+}
+
+.submit:hover{
+    background: rgb(66, 75, 92);
+    color: antiquewhite;
+}
+
+p{
+    color: antiquewhite;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    margin-top:40px;
+    right:70px;
+}
+
+label:nth-of-type(2) {
+    margin-top: 20px;
+}
+
