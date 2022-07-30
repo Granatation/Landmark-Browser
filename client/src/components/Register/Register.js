@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Register = () => {
     return (
-        <section id="login" className="form-section">
+        <section id="register" className="form-section">
             <form>
                 <div>
-                    <h1>Login</h1>
+                    <h1>Register</h1>
                     <label htmlFor="username">Username:</label>
                     <input type="username" id="username" name="username" placeholder="username" />
 
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" />
 
-                    <input type="submit" className="submit" value="Login" />
+                    <label htmlFor="repass">Repeat password:</label>
+                    <input type="password" id="repass" name="repass" />
+
+                    <input type="submit" className="submit" value="Register" />
                     <p>
-                        <span>If you don't have profile click <Link to="/register">here</Link></span>
+                        <span>If you already have profile click <Link to="/login">here</Link></span>
                     </p>
                 </div>
             </form>
