@@ -6,8 +6,8 @@ export const Login = () => {
             <form>
                 <div>
                     <h1>Login</h1>
-                    <label htmlFor="username">Username:</label>
-                    <input type="username" id="username" name="username" placeholder="username" />
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="email" />
 
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" />

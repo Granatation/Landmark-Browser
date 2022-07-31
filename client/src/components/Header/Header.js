@@ -5,8 +5,8 @@ export const Header = () => {
         <header>
             <Link className='home' to='/'>Home</Link>
             <nav>
-                <Link to='/catalog'>All landscapes</Link>
-                <Link to='/add'>Add Landscape</Link>
+                <Link to='/catalog'>All Destinations</Link>
+                <Link to='/add'>Add Destination</Link>
                 <Link to='/logout'>Logout</Link>
                 <Link to='/login'>Login</Link>
                 <Link to='/register'>Register</Link>
