@@ -1,10 +1,10 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const cors =require('cors');
+const cors = require('cors');
 
 const { PORT } = require('./config/env.js');
 const { dbInit } = require('./config/db');
-const router  = require('./controllers/user');
+const router = require('./controllers/user');
 
 const app = express();
 

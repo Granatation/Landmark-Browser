@@ -11,8 +11,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Password required']
+    },
+    accessToken: {
+        type:String
     }
-
 });
 
 userSchema.pre('save', function(next) {
