@@ -6,7 +6,6 @@ export const Register = () => {
         e.preventDefault();
 
         const data = Object.fromEntries(new FormData(e.target))
-        console.log(data);
 
         fetch('http://localhost:3030/register', {
             method: 'POST',
@@ -17,9 +16,11 @@ export const Register = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                if (result.message) {
+                    throw Error(result.message)
+                }
             })
-            .catch(error => console.log(error))
+            .catch(error => alert(error.message))
     }
 
     return (

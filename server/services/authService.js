@@ -7,19 +7,23 @@ const { SECRET } = require('../config/env')
 exports.create = (userData) => User.create(userData);
 
 exports.login = async(email, password) => {
-    const user = await User.findOne({ email });
+    try {
+        const user = await User.findOne({ email });
 
-    if (!User) {
-        throw new Error('Cannot find email or password')
+        if (!user) {
+            throw new Error('Cannot find email or password')
+        }
+    
+        const isValid = await bcrypt.compare(password, user.password);
+
+        if (!isValid) {
+            throw new Error('Cannot find email or password')
+        }
+    
+        return user;
+    } catch (error) {
+        return error
     }
-
-    const isValid = bcrypt.compare(password, user.password);
-
-    if (!isValid) {
-        throw new Error('Cannot find email or password')
-    }
-
-    return user;
 };
 
 exports.createToken = (user) => {

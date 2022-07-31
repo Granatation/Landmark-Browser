@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
 
 export const Login = () => {
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const data = Object.fromEntries(new FormData(e.target))
+
+        fetch('http://localhost:3030/login', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res =>res.json())
+            .then(result => {
+                if(result.message){
+                    throw Error(result.message)
+                }
+            })
+            .catch(error => alert(error.message))
+    }
+
     return (
         <section id="login" className="form-section">
-            <form>
+            <form onSubmit={onSubmit}>
                 <div>
                     <h1>Login</h1>
                     <label htmlFor="email">Email:</label>

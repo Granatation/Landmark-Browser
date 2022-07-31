@@ -8,39 +8,50 @@ const User = require('../models/User');
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    if (email == '' || password == '') {
-        throw new Error('Empty fields!')
+    try {
+        if (email == '' || password == '') {
+            throw new Error('Empty fields!')
+        }
+
+        const result = await authService.login(email, password);
+
+        if (!result.email) {
+            throw result
+        }
+        const token = await authService.createToken(result);
+
+        console.log(token);
+
+        res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
+        res.json(result);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 
-    const user = await authService.login(email, password);
-
-    if (!user) {
-        throw new Error('Invalid email or password')
-    }
-    
-    const token = await authService.createToken(user);
-    res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
-    res.json(user);
 });
 
 router.post('/register', async (req, res) => {
     const { email, password, repass } = req.body;
+    try {
+        const existing = await User.findOne({ email });
 
-    const emailIsTaken = await User.findOne({ email });
+        if (existing) {
+            throw new Error('Email is taken!')
+        }
 
-    if (emailIsTaken) {
-        throw new Error('Email is taken!')
+        if (password !== repass) {
+            throw new Error('Password missmatch!')
+        }
+
+        const createdUser = await authService.create({ email, password })
+        const token = await authService.createToken(createdUser)
+
+        res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
+        res.status(201).json(createdUser);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 
-    if (password !== repass) {
-        throw new Error('Password missmatch!')
-    }
-
-    const createdUser = await authService.create({ email, password })
-    const token = await authService.createToken(createdUser)
-
-    res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
-    res.json(createdUser);
 });
 
 router.get('/logout', (req, res) => {
