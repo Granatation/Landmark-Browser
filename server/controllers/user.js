@@ -18,9 +18,6 @@ router.post('/login', async (req, res) => {
             throw result
         }
 
-        const token = await authService.createToken(result)
-        result.accessToken = token;
-
         res.json(result);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -42,10 +39,8 @@ router.post('/register', async(req, res) => {
             throw new Error('Password missmatch!')
         }
 
-        const createdUser = await authService.create({ email, password })
-
-        const token = await authService.createToken(createdUser)
-        createdUser.accessToken = token
+        const accessToken = await authService.createToken(email)
+        const createdUser = await authService.create({ email, password,accessToken })
 
         res.status(201).json(createdUser);
     } catch (error) {

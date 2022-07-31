@@ -27,8 +27,8 @@ exports.login = async (email, password) => {
     }
 };
 
-exports.createToken = (user) => {
-    const payload = { _id: user._id, email: user.email };
+exports.createToken = (email) => {
+    const payload = { email };
     const options = { expiresIn: '2d' }
 
     return new Promise((resolve, reject) => {

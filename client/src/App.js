@@ -12,7 +12,7 @@ import { Logout } from './components/Logout/Logout';
 import {useLocalStorage} from './hooks/useLocalStorage';
 
 function App() {
-  const [auth, setAuth] = useLocalStorage('auth', {})
+  const [user, setAuth] = useLocalStorage('auth', {})
   // const navigate = useNavigate();
 
   const userLogin = (authData) => {
@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ auth, userLogin, userLogout }}>
+    <AuthContext.Provider value={{ user, userLogin, userLogout }}>
       <div>
         <Header />
 
