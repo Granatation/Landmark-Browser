@@ -11,15 +11,8 @@ export const register = (email, password, repass) =>
 
 export const logout = async (accessToken) => {
     try {
-        const response = await fetch(`${baseUrl}/logout`, {
-            headers: {
-                'X-Authorization': accessToken
-            }
-        });
 
         localStorage.clear();
-
-        return response
 
     } catch (error) {
         console.log(error);

@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const { PORT } = require('./config/env.js');
 const { dbInit } = require('./config/db');
-const router = require('./controllers/user');
+const router = require('./controllers/userController');
 
 const app = express();
 

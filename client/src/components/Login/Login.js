@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -8,8 +8,14 @@ import * as authService from '../../services/authService';
 
 export const Login = () => {
 
-    const { userLogin } = useContext(AuthContext);
+    const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuth) {
+            return navigate('/404');
+        }
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +25,7 @@ export const Login = () => {
         authService.login(email, password)
             .then(result => {
                 userLogin(result)
-                navigate('/');
+                if (result) navigate('/');
             })
             .catch(error => alert(error.message))
     }
@@ -36,7 +42,7 @@ export const Login = () => {
                     <input type="password" id="password" name="password" />
 
                     <input type="submit" className="submit" value="Login" />
-                    <p>
+                    <p className="auth-paragraph">
                         <span>If you don't have profile click <Link to="/register">here</Link></span>
                     </p>
                 </div>
