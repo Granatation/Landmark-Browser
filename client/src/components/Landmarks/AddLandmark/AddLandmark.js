@@ -36,7 +36,7 @@ export const AddLandmark = () => {
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="name" />
 
-                    <label htmlFor="town">Town:</label>
+                    <label htmlFor="town">Town / City:</label>
                     <input type="text" id="town" name="town" />
 
                     <label htmlFor="country">Country:</label>
@@ -45,8 +45,8 @@ export const AddLandmark = () => {
                     <label htmlFor="imageUrl">Image URL:</label>
                     <input type="text" id="imageUrl" name="imageUrl" />
 
-                    <label htmlFor="discoveryYear">Year of discovery:</label>
-                    <input type="text" id="discovery-year" name="discoveryYear" />
+                    <label htmlFor="description">Description:</label>
+                    <textarea type="text" id="description" name="description" />
 
                     <input type="submit" className="addBtn" value="Add" />
                 </div>
