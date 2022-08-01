@@ -1,13 +1,13 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useContext,useEffect } from "react";
 
 // import { AuthContext } from "../../contexts/AuthContext";
 
-// import * as authService from '../../services/authService';
+import * as landmarkService from '../../../services/landmarkService';
 
 export const AddLandmark = () => {
     // const { userLogin,isAuth } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // useEffect(() => {
     //     if (isAuth) {
@@ -15,22 +15,21 @@ export const AddLandmark = () => {
     //     }
     // }, []);
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
+    const onSubmit = (e) => {
+        e.preventDefault();
 
-    //     const {email,password,repass} = Object.fromEntries(new FormData(e.target)); 
-
-    //     authService.register(email,password,repass)
-    //         .then(result => {
-    //             userLogin(result)
-    //             navigate('/');
-    //         })
-    //         .catch(error => alert(error.message))
-    // }
+        const { name, town, country, imageUrl, description } = Object.fromEntries(new FormData(e.target)); 
+        
+        landmarkService.add({ name, town, country, imageUrl, description })
+            .then(result => {
+                navigate('/');
+            })
+            .catch(error => alert(error.message))
+    }
 
     return (
         <section id="add" className="add-section">
-            <form >
+            <form onSubmit={onSubmit}>
                 <div>
                     <h1>Add a Landmark</h1>
                     <label htmlFor="name">Name:</label>

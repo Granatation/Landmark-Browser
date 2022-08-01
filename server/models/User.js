@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
     },
     accessToken: {
         type:String
-    }
+    },
+    landmarks:[{
+        type: mongoose.Types.ObjectId,
+        ref: 'Landmark'
+    }]
 });
 
 userSchema.pre('save', function(next) {

@@ -6,6 +6,7 @@ const { SECRET } = require('../config/env')
 
 exports.create = async(data) => User.create(data);
 
+exports.update = (userId, userData) => User.updateOne({ _id: userId }, { $set: userData });
 
 exports.login = async (email, password) => {
     try {
