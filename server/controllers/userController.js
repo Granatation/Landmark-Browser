@@ -17,7 +17,6 @@ router.post('/login', async (req, res) => {
         if (!result.email) {
             throw result
         }
-
         res.json(result);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -25,8 +24,8 @@ router.post('/login', async (req, res) => {
 
 });
 
-router.post('/register', async(req, res) => {
-   
+router.post('/register', async (req, res) => {
+
     const { email, password, repass } = req.body;
     try {
         const existing = await User.findOne({ email });
@@ -40,7 +39,7 @@ router.post('/register', async(req, res) => {
         }
 
         const accessToken = await authService.createToken(email)
-        const createdUser = await authService.create({ email, password,accessToken })
+        const createdUser = await authService.create({ email, password, accessToken })
 
         res.status(201).json(createdUser);
     } catch (error) {
