@@ -36,10 +36,10 @@ export const Login = () => {
                 <div>
                     <h1>Login</h1>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="email" />
+                    <input type="email" id="email" name="email" placeholder="email@sth.com" />
 
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" id="password" name="password" placeholder="**********"/>
 
                     <input type="submit" className="submit" value="Login" />
                     <p className="auth-paragraph">

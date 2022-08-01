@@ -1,33 +1,23 @@
-.form-section{
+.add-section {
     position: relative;
     border-radius: 20px;
     background-color: rgb(66, 75, 92);
-    width:500px;
+    width: 500px;
+    height:700px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 70px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-#login{
-    height:500px;
-}
-
-#register{
-    height:620px;
-}
-
-
-.form-section h1{
+.add-section h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: antiquewhite;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
-input[type="email"],
-input[type="password"],
-input[for="repass"] {
+input[type="text"]{
     background: antiquewhite;
     padding: 6px;
     font-size: 24px;
@@ -39,20 +29,23 @@ input[for="repass"] {
     margin: auto; 
 }
 
-label[for="email"],
-label[for="password"],
-label[for="repass"] {
+label[for="name"],
+label[for="location"],
+label[for="town"],
+label[for="country"],
+label[for="imageUrl"],
+label[for="discoveryYear"] {
     color: antiquewhite;
     padding: 20px;
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     height:20px;
-    display: block;
+    display:block;
     width: 70%;
     margin: auto; 
 }
 
-.submit{
+.addBtn{
     width:90px;
     height:50px;
     margin: auto; 
@@ -63,21 +56,7 @@ label[for="repass"] {
     background: antiquewhite;
 }
 
-.submit:hover{
+.addBtn:hover{
     background: rgb(66, 75, 92);
     color: antiquewhite;
 }
-
-.auth-paragraph{
-    color: antiquewhite;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    position: absolute;
-    bottom: 30px;
-    right:70px;
-}
-
-.form-section label:nth-of-type(n+2) {
-    margin-top: 20px;
-}
-

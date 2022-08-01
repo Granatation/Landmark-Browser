@@ -8,6 +8,7 @@ import { Home } from './components/Home/Home';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from './components/Logout/Logout';
+import { AddLandmark } from './components/Landmarks/AddLandmark/AddLandmark';
 
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { PageNotFound } from './components/404/404';
@@ -27,7 +28,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ user, userLogin, userLogout,isAuth }}>
+    <AuthContext.Provider value={{ user, userLogin, userLogout, isAuth }}>
       <div>
         <Header />
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/logout' element={<Logout />} />
+            <Route path='/add-landmark' element={<AddLandmark />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </main>

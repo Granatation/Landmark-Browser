@@ -12,11 +12,11 @@ export const Header = () => {
             <nav>
 
                 {user?.email ? <Link to='/my-profile'>{user.email}</Link> : ''}
-                <Link to='/catalog'>All Destinations</Link>
+                <Link to='/all-landmarks'>All Landmarks</Link>
                 {
                     user?.accessToken
                         ? <>
-                            <Link to='/add'>Add Destination</Link>
+                            <Link to='/add-landmark'>Add Landmark</Link>
                             <Link to='/logout'>Logout</Link>
                         </>
                         : <>
