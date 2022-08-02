@@ -11,7 +11,7 @@ export const Header = () => {
             <Link className='home' to='/'>Home</Link>
             <nav>
 
-                {user?.email ? <Link to='/my-profile'>{user.email}</Link> : ''}
+                {user?.accessToken ? <Link to='/my-profile'>{user.email}</Link> : ''}
                 <Link to='/all-landmarks'>All Landmarks</Link>
                 {
                     user?.accessToken

@@ -4,13 +4,20 @@ export const useLocalStorage = (key, defaultValue) => {
     const [value, setValue] = useState(() => {
         const storedData = localStorage.getItem(key);
 
-        return (storedData && storedData != undefined) ? JSON.parse(storedData) : defaultValue;
+        return (storedData && storedData !== undefined) ? JSON.parse(storedData) : defaultValue;
     });
 
     const setLocalStorageValue = (newValue) => {
-        if (newValue == undefined) {
+        if (newValue === undefined) {
             newValue = {}
         }
+        newValue.email
+            ? newValue = {
+                email: newValue.email,
+                _id: newValue._id,
+                accessToken: newValue.accessToken
+            }
+            : newValue = {}
         localStorage.setItem(key, JSON.stringify(newValue))
         setValue(newValue);
     }
