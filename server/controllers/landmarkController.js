@@ -40,4 +40,9 @@ router.post('/add-landmark', async (req, res) => {
 
 });
 
+router.get('/all-landmarks', async (req, res) => {
+    const landmarks = await landmarkService.getAll();
+    res.json(landmarks);
+})
+
 module.exports = router;
