@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from '../../services/authService';
 
 export const Register = () => {
-    const { userLogin,isAuth } = useContext(AuthContext);
+    const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,9 +19,9 @@ export const Register = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const {email,password,repass} = Object.fromEntries(new FormData(e.target)); 
+        const { username, email, password, repass } = Object.fromEntries(new FormData(e.target));
 
-        authService.register(email,password,repass)
+        authService.register(username, email, password, repass)
             .then(result => {
                 userLogin(result)
                 if (result) navigate('/');
@@ -34,14 +34,17 @@ export const Register = () => {
             <form onSubmit={onSubmit}>
                 <div>
                     <h1>Register</h1>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="someone" />
+
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="email@sth.com" />
 
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="**********"/>
+                    <input type="password" id="password" name="password" placeholder="**********" />
 
                     <label htmlFor="repass">Repeat password:</label>
-                    <input type="password" id="repass" name="repass" placeholder="**********"/>
+                    <input type="password" id="repass" name="repass" placeholder="**********" />
 
                     <input type="submit" className="submit" value="Register" />
                     <p className="auth-paragraph">

@@ -1,11 +1,12 @@
 import { SingleLandmark } from "../SingleLandmark/SingleLandmark";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import * as landmarkService from '../../../services/landmarkService';
+import { LandmarkContext } from "../../../contexts/LandmarkContext";
 
 export const AllLandmarks = () => {
 
-    const [landmarks, setLandmarks] = useState([]);
+    const { landmarks, setLandmarks } = useContext(LandmarkContext)
 
     useEffect(() => {
         landmarkService.getAll()

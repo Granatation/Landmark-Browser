@@ -8,6 +8,8 @@ exports.create = async(data) => User.create(data);
 
 exports.update = (userId, userData) => User.updateOne({ _id: userId }, { $set: userData });
 
+exports.getOne = (userId) => User.findById(userId);
+
 exports.login = async (email, password) => {
     try {
         const user = await User.findOne({ email });

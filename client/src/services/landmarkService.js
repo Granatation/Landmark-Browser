@@ -7,3 +7,6 @@ export const add = (landmarkData) =>
 
 export const getAll = () =>
     request.get(`${baseUrl}/all-landmarks`);
+
+export const getOne = (landmarkId) =>
+    request.get(`${baseUrl}/all-landmarks/${landmarkId}`);

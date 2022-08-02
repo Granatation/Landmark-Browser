@@ -18,7 +18,7 @@
     margin-bottom: 10px;
 }
 
-input[type="text"]{
+.add-section>input[type="text"]{
     background: antiquewhite;
     padding: 6px;
     font-size: 24px;

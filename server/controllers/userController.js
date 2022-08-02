@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
 
-    const { email, password, repass } = req.body;
+    const { username, email, password, repass } = req.body;
     try {
         const existing = await User.findOne({ email });
 
@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
         }
 
         const accessToken = await authService.createToken(email)
-        const createdUser = await authService.create({ email, password, accessToken })
+        const createdUser = await authService.create({ username, email, password, accessToken })
 
         res.status(201).json(createdUser);
     } catch (error) {

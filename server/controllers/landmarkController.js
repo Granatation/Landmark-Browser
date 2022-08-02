@@ -23,6 +23,7 @@ router.post('/add-landmark', async (req, res) => {
 
         await authService.update(user._id, {
             _id: user._id,
+            username: user.username,
             accessToken: user.accessToken,
             email: user.email,
             password: user.password,
@@ -43,6 +44,12 @@ router.post('/add-landmark', async (req, res) => {
 router.get('/all-landmarks', async (req, res) => {
     const landmarks = await landmarkService.getAll();
     res.json(landmarks);
+});
+
+router.get('/all-landmarks/:landmarkId', async (req, res) => {
+    const landmark = await landmarkService.getOne(req.params.landmarkId);
+    const postedBy = await authService.getOne(landmark.postedBy);
+    res.json({landmark , postedBy});
 })
 
 module.exports = router;
