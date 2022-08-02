@@ -28,6 +28,7 @@ input[type="text"]{
     display: block;
     width: 70%;
     margin: auto; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 textarea{
@@ -40,6 +41,7 @@ textarea{
     display: block;
     width: 70%;
     margin: auto; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 label[for="name"],
@@ -67,6 +69,7 @@ label[for="description"] {
     font-size: 20px;
     color: rgb(66, 75, 92);
     background: antiquewhite;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .addBtn:hover{

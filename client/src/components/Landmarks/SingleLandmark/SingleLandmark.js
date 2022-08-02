@@ -1,12 +1,14 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const SingleLandmark = ({landmark}) => {
+export const SingleLandmark = ({ landmark }) => {
     return (
-            <div>
-                <img src={landmark.imageUrl} />
-                <h6>{landmark.town} {landmark.country}</h6>
+        <div className="singleLandmark">
+            <img src={landmark.imageUrl} />
+            <div id="landmark-info-container">
                 <h2>{landmark.name}</h2>
-                {/* <Link to={`/catalog/${game._id}`} className="details-button">Details</Link> */}
+                <h6>{landmark.town} <br />{landmark.country}</h6>
+                <Link to={`/all-landmarks/${landmark._id}`} className="details-button">Details</Link>
             </div>
+        </div>
     );
 }

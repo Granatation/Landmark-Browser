@@ -1,0 +1,70 @@
+#all-landmarks-page {
+    background-color: rgb(66, 75, 92);
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    width: 75%;
+    min-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+#all-landmarks-page h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin: 0;
+    color: antiquewhite;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.singleLandmark {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin: 50px;
+    width: 300px;
+    height: 400px;
+}
+
+.singleLandmark>img {
+    height: 200px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    margin: auto;
+    width: 300px;
+}
+
+.details-button{
+    width:90px;
+    text-align: center;
+    display:block;
+    margin: auto; 
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    background: rgb(66, 75, 92);
+    color: antiquewhite;
+    border: 2px solid black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.details-button:hover{
+    color: rgb(66, 75, 92);
+    background: antiquewhite;
+}
+
+#landmark-info-container>h6,
+h2 {
+    font-size: 20px;
+    color: rgb(66, 75, 92);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px
+}
