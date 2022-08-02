@@ -1,0 +1,74 @@
+#details-section {
+    background-color: rgb(66, 75, 92);
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    width: 75%;
+    min-width: 750px;
+    height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#details-section>div {
+    float: right;
+}
+
+#details-section>div>* {
+    display: flex;
+}
+
+#details-section>div>#details-btn-container{
+    justify-content:center;
+}
+
+#details-section div>p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+    color: antiquewhite;
+}
+
+#details-section h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: antiquewhite;
+    font-size: 30px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#details-section>* {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+
+#details-section img {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#edit-btn,
+#delete-btn {
+    width: 90px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    margin: 20px;
+    background: rgb(66, 75, 92);
+    color: antiquewhite;
+    border: 2px solid black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+#edit-btn:hover,
+#delete-btn:hover {
+    color: rgb(66, 75, 92);
+    background: antiquewhite;
+}

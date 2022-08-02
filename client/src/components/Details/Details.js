@@ -19,28 +19,21 @@ export const Details = () => {
     }, []);
 
     return (
-        <section>
-            <h1>Landmark Details</h1>
+        <section id="details-section">
+            <img src={landmark.imageUrl} />
+
             <div>
-
-                <div>
-                    <img src={landmark.imageUrl} />
-                    <h1>{landmark.name}</h1>
-                    <h1>{landmark.town}</h1>
-                    <h1>{landmark.country}</h1>
-                    <h1>Posted by: {creator.username}</h1>
-                </div>
-
-                <p >
-                    {landmark.description}
-                </p>
-
-                <div className="buttons">
-                    <Link to={`/all-landmarks/${landmark._id}/edit`} className="button">Edit</Link>
-                    <Link to={`/all-landmarks/${landmark._id}/delete`} className="button">Delete</Link>
+                <h1>Landmark Details</h1>
+                <p>{landmark.name}</p>
+                <p>{landmark.town}</p>
+                <p>{landmark.country}</p>
+                <p>Posted by: {creator.username}</p>
+                <p >{landmark.description}</p>
+                <div id="details-btn-container">
+                    <Link id="edit-btn" to={`/all-landmarks/${landmark._id}/edit`} >Edit</Link>
+                    <Link id="delete-btn" to={`/all-landmarks/${landmark._id}/delete`} >Delete</Link>
                 </div>
             </div>
-
         </section>
     );
 }
