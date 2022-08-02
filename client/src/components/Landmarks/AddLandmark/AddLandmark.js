@@ -1,25 +1,25 @@
 import { useNavigate } from "react-router-dom";
-// import { useContext,useEffect } from "react";
+import { useContext, useEffect } from "react";
 
-// import { AuthContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 import * as landmarkService from '../../../services/landmarkService';
 
 export const AddLandmark = () => {
-    // const { userLogin,isAuth } = useContext(AuthContext);
+    const { isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (isAuth) {
-    //         return navigate('/404');
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!isAuth) {
+            return navigate('/404');
+        }
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const { name, town, country, imageUrl, description } = Object.fromEntries(new FormData(e.target)); 
-        
+        const { name, town, country, imageUrl, description } = Object.fromEntries(new FormData(e.target));
+
         landmarkService.add({ name, town, country, imageUrl, description })
             .then(result => {
                 navigate('/');

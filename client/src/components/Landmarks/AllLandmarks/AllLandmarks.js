@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 import * as landmarkService from '../../../services/landmarkService';
 
-
 export const AllLandmarks = () => {
 
     const [landmarks, setLandmarks] = useState([]);

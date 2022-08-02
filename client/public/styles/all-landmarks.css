@@ -28,6 +28,10 @@
     height: 400px;
 }
 
+.short{
+    height: 340px;
+}
+
 .singleLandmark>img {
     height: 200px;
     border-radius: 20px;
