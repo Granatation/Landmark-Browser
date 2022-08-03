@@ -45,7 +45,11 @@ function App() {
               <Route path='/logout' element={<Logout />} />
               <Route path='/add-landmark' element={<AddLandmark />} />
               <Route path='/all-landmarks' element={<AllLandmarks />} />
-              <Route path='/all-landmarks/:landmarkId' element={<Details />} />
+              {isAuth
+              ?<Route path='/all-landmarks/:landmarkId' element={<Details />} />
+              :<Route path='/all-landmarks/*' element={<PageNotFound />} />
+            }
+              
               <Route path='*' element={<PageNotFound />} />
             </Routes>
           </main>

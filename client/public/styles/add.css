@@ -3,9 +3,10 @@
     border-radius: 20px;
     background-color: rgb(66, 75, 92);
     width: 600px;
-    height:750px;
+    height:840px;
     margin: auto;
     margin-top: 50px;
+    margin-bottom: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -15,7 +16,8 @@
     color: antiquewhite;
     text-align: center;
     padding-top: 40px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .add-section>input[type="text"]{
@@ -52,6 +54,7 @@ label[for="imageUrl"],
 label[for="description"] {
     color: antiquewhite;
     padding: 20px;
+    padding-top: 30px;
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     height:20px;
@@ -75,4 +78,25 @@ label[for="description"] {
 .addBtn:hover{
     background: rgb(66, 75, 92);
     color: antiquewhite;
+}
+
+.add-section label:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+
+.error{
+    width:70%;
+    margin:auto;
+    height: 25px;
+    margin-top:5px;
+    font-size: 18px;
+    color:crimson;
+}
+.error+label{
+    padding-top: 0;
+    margin: auto;
+}
+
+.error+.addBtn{
+    margin-top: 10px;
 }
