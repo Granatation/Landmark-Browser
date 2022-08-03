@@ -175,7 +175,7 @@ export const Register = () => {
                     }
 
                     <p className="auth-paragraph">
-                        <span>If you already have profile click <Link to="/login">here</Link></span>
+                        <span><em>If you already have profile click <Link to="/login">here</Link></em></span>
                     </p>
                 </div>
             </form>

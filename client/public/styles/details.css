@@ -1,10 +1,10 @@
 #details-section {
     background-color: rgb(66, 75, 92);
     margin: auto;
-    margin-top: 100px;
+    margin-top: 150px;
+    margin-bottom: 150px;
     border-radius: 20px;
-    width: 75%;
-    min-width: 750px;
+    width: 1000px;
     height: 500px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
@@ -17,8 +17,8 @@
     display: flex;
 }
 
-#details-section>div>#details-btn-container{
-    justify-content:center;
+#details-section>div>#details-btn-container {
+    justify-content: center;
 }
 
 #details-section div>p {
@@ -26,6 +26,7 @@
     font-size: 20px;
     margin-left: 50px;
     margin-top: 20px;
+    margin-right: 50px;
     color: antiquewhite;
 }
 
@@ -40,12 +41,18 @@
 
 #details-section>* {
     display: inline-block;
-    width: 50%;
+    width: 60%;
     height: 100%;
+}
+
+#details-section>div {
+    position: relative;
 }
 
 
 #details-section img {
+    float: left;
+    width: 40%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -71,4 +78,10 @@
 #delete-btn:hover {
     color: rgb(66, 75, 92);
     background: antiquewhite;
+}
+
+#details-btn-container {
+    position: absolute;
+    bottom: 20px;
+    left: 146px;
 }

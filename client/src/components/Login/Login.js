@@ -127,7 +127,7 @@ export const Login = () => {
                     }
 
                     <p className="auth-paragraph">
-                        <span>If you don't have profile click <Link to="/register">here</Link></span>
+                        <span><em>If you don't have profile click <Link to="/register">here</Link></em></span>
                     </p>
                 </div>
             </form>
