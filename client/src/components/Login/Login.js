@@ -11,7 +11,13 @@ export const Login = () => {
     const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [errors, setErrors] = useState({})
+
+    const [hasErrors, setHasErrors] = useState(true)
+    const [btnDisabled, setBtnDisabled] = useState(true)
+    const [errors, setErrors] = useState({
+        email: {},
+        password: {}
+    });
     const [values, setValues] = useState({
         email: '',
         password: ''
@@ -21,7 +27,7 @@ export const Login = () => {
         setValues(state => ({
             ...state,
             [e.target.name]: e.target.value
-        }))
+        }));
     }
 
     useEffect(() => {
@@ -29,6 +35,19 @@ export const Login = () => {
             return navigate('/404');
         }
     }, []);
+    
+    useEffect(() => {
+        setHasErrors(Object.values(errors)
+            .map(x => Object.values(x).includes(true))
+            .includes(true))
+    }, [errors])
+
+    useEffect(() => {
+        setBtnDisabled(hasErrors ||
+            values.email === '' ||
+            values.password === '')
+    }, [hasErrors, values])
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -66,6 +85,7 @@ export const Login = () => {
                         name="email"
                         placeholder="email@sth.com"
                         onChange={changeHandler}
+                        value={values.email}
                         onBlur={(e) => lengthValidator(e)}
                     />
 
@@ -86,6 +106,7 @@ export const Login = () => {
                         name="password"
                         placeholder="**********"
                         onChange={changeHandler}
+                        value={values.password}
                         onBlur={(e) => lengthValidator(e)}
                     />
 
@@ -100,10 +121,7 @@ export const Login = () => {
                     }
 
                     {
-                        errors.password?.minLength ||
-                            errors.username?.minLength ||
-                            errors.password?.maxLength ||
-                            errors.username?.maxLength
+                        btnDisabled
                             ? <input type="submit" className="submit" value="Login" disabled />
                             : <input type="submit" className="submit" value="Login" />
                     }
