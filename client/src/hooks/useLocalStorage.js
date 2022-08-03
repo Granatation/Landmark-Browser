@@ -13,6 +13,7 @@ export const useLocalStorage = (key, defaultValue) => {
         }
         newValue.email
             ? newValue = {
+                username: newValue.username,
                 email: newValue.email,
                 _id: newValue._id,
                 accessToken: newValue.accessToken

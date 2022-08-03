@@ -4,14 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
 
     return (
         <header>
             <Link className='home' to='/'>Home</Link>
             <nav>
 
-                {user?.accessToken ? <Link to='/my-profile'>{user.email}</Link> : ''}
+                {user?.accessToken ? <Link to='/my-profile'>{user.username}</Link> : ''}
                 <Link to='/all-landmarks'>All Landmarks</Link>
                 {
                     user?.accessToken
@@ -24,9 +24,7 @@ export const Header = () => {
                             <Link to='/register'>Register</Link>
                         </>
                 }
-
-
-
+                
             </nav>
         </header>
     );
