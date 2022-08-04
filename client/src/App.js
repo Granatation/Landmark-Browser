@@ -16,6 +16,7 @@ import { Delete } from './components/Landmarks/Delete/Delete';
 import { AuthContext } from './contexts/AuthContext';
 import { LandmarkContext } from './contexts/LandmarkContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { Visit } from './components/Landmarks/Visit/Visit';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
               <Route path='/all-landmarks/:landmarkId' element={<Details />} />
               <Route path='/all-landmarks/:landmarkId/edit' element={<Edit />} />
               <Route path='/all-landmarks/:landmarkId/delete' element={<Delete />} />
+              <Route path='/all-landmarks/:landmarkId/visit' element={<Visit />} />
               <Route path='*' element={<PageNotFound />} />
             </Routes>
           </main>

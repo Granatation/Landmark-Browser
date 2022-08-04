@@ -33,14 +33,15 @@ export const Details = () => {
 
             <div>
                 <h1>Landmark Details</h1>
-                <p>&#10039; {landmark.name}</p>
-                <p>&#10039; {landmark.town}, {landmark.country}</p>
+                <p>&#10039; Name: {landmark.name}</p>
+                <p>&#10039; Location: {landmark.town}, {landmark.country}</p>
                 <p>&#10039; Posted by: {creator.username}</p>
-                <p>&#10039; {landmark.description}</p>
+                <p>&#10039; Description: {landmark.description}</p>
+                <p>&#10039; Visitors: {landmark.visitors?.length}</p>
                 {
-                    user._id !== creator._id &&
+                    user._id !== creator._id && !landmark.visitors?.includes(user._id) &&
                     <p>
-                        <span><em>If you have visited this landmark click <Link to=''>here</Link></em></span>
+                        <span><em>If you have visited this landmark click <Link to={`/all-landmarks/${landmark._id}/visit`}>here</Link></em></span>
                     </p>
                 }
                 {

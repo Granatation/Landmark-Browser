@@ -21,14 +21,15 @@ const landmarkSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Description required']
     },
+    visitors:[{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }],
     postedBy: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
-    },
-    visitedBy:[{
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-    }]
+    }
+    
 });
 
 const Landmark = mongoose.model('Landmark', landmarkSchema);

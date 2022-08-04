@@ -81,4 +81,25 @@ router.get('/all-landmarks/:landmarkId/delete', async (req, res) => {
     res.json(landmark);
 });
 
+router.get('/all-landmarks/:landmarkId/visit', async (req, res) => {
+    const landmark = await landmarkService.getOne(req.params.landmarkId);
+
+    const user  = await authService.getUser(req);
+
+    const visitorsArr = [...landmark.visitors, user._id];
+
+    const updatedLandmark = await landmarkService.update(req.params.landmarkId, {
+        _id: landmark._id,
+        name: landmark.name,
+        town: landmark.town,
+        country: landmark.country,
+        imageUrl: landmark.imageUrl,
+        description: landmark.description,
+        postedBy: landmark.postedBy,
+        visitors: visitorsArr
+    });
+
+    res.json(updatedLandmark);
+});
+
 module.exports = router;

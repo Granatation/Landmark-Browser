@@ -16,3 +16,6 @@ export const edit = (landmarkId, landmarkData) =>
 
 export const del = (landmarkId) =>
     request.get(`${baseUrl}/all-landmarks/${landmarkId}/delete`);
+
+export const visit = (landmarkId) =>
+    request.get(`${baseUrl}/all-landmarks/${landmarkId}/visit`);

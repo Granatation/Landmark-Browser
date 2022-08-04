@@ -189,7 +189,7 @@ export const AddLandmark = () => {
 
                     {
                         btnDisabled
-                            ? <input type="submit" className="addBtn" value="Add" disabled/>
+                            ? <input type="submit" className="addBtn" value="Add" disabled />
                             : <input type="submit" className="addBtn" value="Add" />
                     }
                 </div>
