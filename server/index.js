@@ -12,6 +12,5 @@ app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(router);
 
-
 dbInit();
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))
