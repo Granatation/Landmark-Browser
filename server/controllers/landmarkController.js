@@ -61,4 +61,9 @@ router.post('/all-landmarks/:landmarkId/edit', async (req, res) => {
     res.json(updatedLandmark);
 });
 
+router.get('/all-landmarks/:landmarkId/delete', async (req, res) => {
+    const landmark = await landmarkService.del(req.params.landmarkId);
+    res.json(landmark);
+});
+
 module.exports = router;

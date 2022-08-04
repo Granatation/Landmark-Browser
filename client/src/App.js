@@ -11,6 +11,7 @@ import { PageNotFound } from './components/404/404';
 import { AllLandmarks } from './components/Landmarks/AllLandmarks/AllLandmarks';
 import { Details } from './components/Landmarks/Details/Details';
 import { Edit } from './components/Landmarks/Edit/Edit';
+import { Delete } from './components/Landmarks/Delete/Delete';
 
 import { AuthContext } from './contexts/AuthContext';
 import { LandmarkContext } from './contexts/LandmarkContext';
@@ -51,6 +52,7 @@ function App() {
               }
               <Route path='/all-landmarks/:landmarkId' element={<Details />} />
               <Route path='/all-landmarks/:landmarkId/edit' element={<Edit />} />
+              <Route path='/all-landmarks/:landmarkId/delete' element={<Delete />} />
               <Route path='*' element={<PageNotFound />} />
             </Routes>
           </main>

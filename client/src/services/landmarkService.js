@@ -13,3 +13,6 @@ export const getOne = (landmarkId) =>
 
 export const edit = (landmarkId, landmarkData) =>
     request.post(`${baseUrl}/all-landmarks/${landmarkId}/edit`, landmarkData);
+
+export const del = (landmarkId) =>
+    request.get(`${baseUrl}/all-landmarks/${landmarkId}/delete`);
