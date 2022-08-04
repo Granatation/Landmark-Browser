@@ -9,19 +9,19 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-#details-section>div {
+#details-container {
     float: right;
 }
 
-#details-section>div>* {
+#details-container>* {
     display: flex;
 }
 
-#details-section>div>#details-btn-container {
+#details-btn-container {
     justify-content: center;
 }
 
-#details-section div>p {
+#details-container>p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin-left: 50px;
@@ -45,16 +45,24 @@
     height: 100%;
 }
 
-#details-section>div {
+#details-container {
     position: relative;
 }
 
-
-#details-section img {
+#details-image-container{
     float: left;
     width: 40%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#details-image-container img {
+    object-fit: contain;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    max-width: 100%;
 }
 
 #edit-btn,

@@ -29,9 +29,12 @@ export const Details = () => {
 
     return (
         <section id="details-section">
-            <img src={landmark.imageUrl} />
+            <div id="details-image-container">
+                <img src={landmark.imageUrl} />
+            </div>
 
-            <div>
+
+            <div id="details-container">
                 <h1>Landmark Details</h1>
                 <p>&#10039; Name: {landmark.name}</p>
                 <p>&#10039; Location: {landmark.town}, {landmark.country}</p>

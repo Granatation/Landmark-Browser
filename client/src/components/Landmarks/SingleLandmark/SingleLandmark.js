@@ -8,7 +8,9 @@ export const SingleLandmark = ({ landmark }) => {
 
     return (
         <div className={`singleLandmark${isAuth?'': ' short'}`}>
-            <img src={landmark.imageUrl} />
+            <div className="imageContainer">
+                <img src={landmark.imageUrl} />
+            </div>
             <div id="landmark-info-container">
                 <h2>{landmark.name}</h2>
                 <h6>{landmark.town} <br />{landmark.country}</h6>
