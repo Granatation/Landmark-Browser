@@ -11,9 +11,11 @@ router.post('/add-landmark', async (req, res) => {
             throw new Error('Empty fields!')
         }
 
-        const user = authService.getUser(req);
+        const user = await authService.getUser(req);
 
         const result = await landmarkService.create({ name, town, country, imageUrl, description, postedBy: user._id });
+
+        const landmarkArr = [...user.landmarks, result._id];
 
         await authService.update(user._id, {
             _id: user._id,
@@ -21,7 +23,7 @@ router.post('/add-landmark', async (req, res) => {
             accessToken: user.accessToken,
             email: user.email,
             password: user.password,
-            landmarks: [...user.landmarks, result._id]
+            landmarks: landmarkArr
         });
 
         if (!result.name) {
@@ -63,6 +65,19 @@ router.post('/all-landmarks/:landmarkId/edit', async (req, res) => {
 
 router.get('/all-landmarks/:landmarkId/delete', async (req, res) => {
     const landmark = await landmarkService.del(req.params.landmarkId);
+
+    const user = await authService.getUser(req);
+
+    const landmarkArr = user.landmarks.filter(x => x != req.params.landmarkId);
+
+    await authService.update(user._id, {
+        _id: user._id,
+        username: user.username,
+        accessToken: user.accessToken,
+        email: user.email,
+        password: user.password,
+        landmarks: landmarkArr
+    });
     res.json(landmark);
 });
 

@@ -49,6 +49,6 @@ exports.getUser = async (req) => {
     const token = req.headers['x-authorization'];
     var decoded = jwt.verify(token, SECRET);
     const email = decoded.email;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).lean();
     return user;
 }
