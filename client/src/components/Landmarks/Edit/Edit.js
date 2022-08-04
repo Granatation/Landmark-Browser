@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import * as landmarkService from '../../../services/landmarkService';
 
-export const AddLandmark = () => {
+export const Edit = () => {
     const { isAuth } = useContext(AuthContext);
+    const { landmarkId } = useParams();
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({})
@@ -24,6 +25,15 @@ export const AddLandmark = () => {
         if (!isAuth) {
             return navigate('/404');
         }
+
+        landmarkService.getOne(landmarkId)
+            .then(result => setValues({
+                name: result.landmark.name,
+                town: result.landmark.town,
+                country: result.landmark.country,
+                imageUrl: result.landmark.imageUrl,
+                description: result.landmark.description
+            }))
     }, []);
 
     useEffect(() => {
@@ -84,9 +94,9 @@ export const AddLandmark = () => {
 
         const { name, town, country, imageUrl, description } = values;
 
-        landmarkService.add({ name, town, country, imageUrl, description })
+        landmarkService.edit(landmarkId, { name, town, country, imageUrl, description })
             .then(() => {
-                navigate('/all-landmarks');
+                navigate(`/all-landmarks/${landmarkId}`);
             })
             .catch(error => alert(error.message))
     }
@@ -95,7 +105,7 @@ export const AddLandmark = () => {
         <section id="add" className="add-section">
             <form onSubmit={onSubmit}>
                 <div>
-                    <h1>Add a Landmark</h1>
+                    <h1>Edit</h1>
                     <label htmlFor="name">Name:</label>
                     <input
                         type="text"
@@ -189,8 +199,8 @@ export const AddLandmark = () => {
 
                     {
                         btnDisabled
-                            ? <input type="submit" className="addBtn" value="Add" disabled/>
-                            : <input type="submit" className="addBtn" value="Add" />
+                            ? <input type="submit" className="addBtn" value="Edit" disabled />
+                            : <input type="submit" className="addBtn" value="Edit" />
                     }
                 </div>
             </form>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import * as landmarkService from '../../services/landmarkService';
+import * as landmarkService from '../../../services/landmarkService';
 
 export const Details = () => {
     const { landmarkId } = useParams();

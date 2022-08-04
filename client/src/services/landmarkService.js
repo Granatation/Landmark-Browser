@@ -10,3 +10,6 @@ export const getAll = () =>
 
 export const getOne = (landmarkId) =>
     request.get(`${baseUrl}/all-landmarks/${landmarkId}`);
+
+export const edit = (landmarkId, landmarkData) =>
+    request.post(`${baseUrl}/all-landmarks/${landmarkId}/edit`, landmarkData);

@@ -1,23 +1,17 @@
 const router = require('express').Router();
 
-const { SECRET } = require('../config/env');
 const landmarkService = require('../services/landmarkService');
-const jwt = require('jsonwebtoken');
 const authService = require('../services/authService');
-
-const User = require('../models/User');
 
 router.post('/add-landmark', async (req, res) => {
     const { name, town, country, imageUrl, description } = req.body;
-    const token = req.headers['x-authorization'];
-    var decoded = jwt.verify(token, SECRET);
-    const email = decoded.email;
-    const user = await User.findOne({ email });
 
     try {
         if (name == '' || town == '' || country == '' || imageUrl == '' || description == '') {
             throw new Error('Empty fields!')
         }
+
+        const user = authService.getUser(req);
 
         const result = await landmarkService.create({ name, town, country, imageUrl, description, postedBy: user._id });
 
@@ -49,7 +43,22 @@ router.get('/all-landmarks', async (req, res) => {
 router.get('/all-landmarks/:landmarkId', async (req, res) => {
     const landmark = await landmarkService.getOne(req.params.landmarkId);
     const postedBy = await authService.getOne(landmark.postedBy);
-    res.json({landmark , postedBy});
-})
+    res.json({ landmark, postedBy });
+});
+
+router.get('/all-landmarks/:landmarkId/edit', async (req, res) => {
+    const landmark = await landmarkService.getOne(req.params.landmarkId);
+    res.json(landmark);
+});
+
+router.post('/all-landmarks/:landmarkId/edit', async (req, res) => {
+    const { name, town, country, imageUrl, description } = req.body;
+    const user = authService.getUser(req);
+
+    const updatedLandmark = await landmarkService
+        .update(req.params.landmarkId, { name, town, country, imageUrl, description, postedBy: user._id });
+
+    res.json(updatedLandmark);
+});
 
 module.exports = router;

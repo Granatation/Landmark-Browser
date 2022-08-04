@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const { SECRET } = require('../config/env')
 
-exports.create = async(data) => User.create(data);
+exports.create = async (data) => User.create(data);
 
 exports.update = (userId, userData) => User.updateOne({ _id: userId }, { $set: userData });
 
@@ -43,4 +43,12 @@ exports.createToken = (email) => {
         })
 
     });
+}
+
+exports.getUser = async (req) => {
+    const token = req.headers['x-authorization'];
+    var decoded = jwt.verify(token, SECRET);
+    const email = decoded.email;
+    const user = await User.findOne({ email });
+    return user;
 }
