@@ -29,10 +29,7 @@ export const Details = () => {
 
     return (
         <section id="details-section">
-            <div id="details-image-container">
-                <img src={landmark.imageUrl} />
-            </div>
-
+            <img id="details-image-container" src={landmark.imageUrl} />
 
             <div id="details-container">
                 <h1>Landmark Details</h1>

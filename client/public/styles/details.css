@@ -49,20 +49,14 @@
     position: relative;
 }
 
-#details-image-container{
+#details-image-container {
+    object-fit: contain;
+    background-color: #30343a;
     float: left;
     width: 40%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    display: flex;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
-}
-
-#details-image-container img {
-    object-fit: contain;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    max-width: 100%;
 }
 
 #edit-btn,
@@ -73,7 +67,7 @@
     padding: 10px;
     font-size: 20px;
     margin: 20px;
-    background: rgb(66, 75, 92);
+    background: #30343a;
     color: antiquewhite;
     border: 2px solid black;
     text-decoration: none;
@@ -84,7 +78,7 @@
 
 #edit-btn:hover,
 #delete-btn:hover {
-    color: rgb(66, 75, 92);
+    color: #30343a;
     background: antiquewhite;
 }
 
