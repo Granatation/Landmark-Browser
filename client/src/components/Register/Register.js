@@ -174,7 +174,7 @@ export const Register = () => {
                             : <input type="submit" className="submit" value="Register" />
                     }
 
-                    <p className="auth-paragraph">
+                    <p className="auth-paragraph-register">
                         <span><em>If you already have profile click <Link to="/login">here</Link></em></span>
                     </p>
                 </div>

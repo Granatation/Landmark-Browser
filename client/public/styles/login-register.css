@@ -75,13 +75,24 @@ label[for="repass"] {
     color: antiquewhite;
 }
 
-.auth-paragraph{
+.auth-paragraph-login{
     color: antiquewhite;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     bottom: 30px;
-    right:70px;
+    width:300px;
+    right:100px;
+}
+
+.auth-paragraph-register{
+    color: antiquewhite;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    bottom: 30px;
+    width:320px;
+    right:100px;
 }
 
 .form-section label:nth-of-type(n+2) {

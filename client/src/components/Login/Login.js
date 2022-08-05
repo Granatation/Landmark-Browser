@@ -126,7 +126,7 @@ export const Login = () => {
                             : <input type="submit" className="submit" value="Login" />
                     }
 
-                    <p className="auth-paragraph">
+                    <p className="auth-paragraph-login">
                         <span><em>If you don't have profile click <Link to="/register">here</Link></em></span>
                     </p>
                 </div>
