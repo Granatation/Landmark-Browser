@@ -4,6 +4,8 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import * as landmarkService from '../../../services/landmarkService';
 
+import { Map } from "../../Map/Map";
+
 export const Details = () => {
     const { landmarkId } = useParams();
     const { user, isAuth } = useContext(AuthContext);
@@ -49,6 +51,8 @@ export const Details = () => {
                         <Link id="delete-btn" to={`/all-landmarks/${landmark._id}/delete`} >Delete</Link>
                     </div>
                 }
+
+                <Map/>
 
             </div>
 
