@@ -9,6 +9,7 @@ import { Logout } from './components/Logout/Logout';
 import { AddLandmark } from './components/Landmarks/AddLandmark/AddLandmark';
 import { PageNotFound } from './components/404/404';
 import { AllLandmarks } from './components/Landmarks/AllLandmarks/AllLandmarks';
+import {AllLandmarksPaged} from './components/Landmarks/AllLandmarks/AllLandmarksPaged'
 import { Details } from './components/Landmarks/Details/Details';
 import { Edit } from './components/Landmarks/Edit/Edit';
 import { Delete } from './components/Landmarks/Delete/Delete';
@@ -48,6 +49,7 @@ function App() {
               <Route path='/logout' element={<Logout />} />
               <Route path='/add-landmark' element={<AddLandmark />} />
               <Route path='/all-landmarks' element={<AllLandmarks />} />
+              <Route path='/all-landmarks/page/:pageNumber' element={<AllLandmarksPaged />} />
               <Route path='/all-landmarks/:landmarkId' element={<Details />} />
               <Route path='/all-landmarks/:landmarkId/edit' element={<Edit />} />
               <Route path='/all-landmarks/:landmarkId/delete' element={<Delete />} />

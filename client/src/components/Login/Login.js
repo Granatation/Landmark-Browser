@@ -7,16 +7,19 @@ import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from '../../services/authService';
 
 export const Login = () => {
-
-    const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [hasErrors, setHasErrors] = useState(true)
-    const [btnDisabled, setBtnDisabled] = useState(true)
+    const { userLogin, isAuth } = useContext(AuthContext);
+
+    const [hasErrors, setHasErrors] = useState(true);
+
+    const [btnDisabled, setBtnDisabled] = useState(true);
+
     const [errors, setErrors] = useState({
         email: {},
         password: {}
     });
+
     const [values, setValues] = useState({
         email: '',
         password: ''
