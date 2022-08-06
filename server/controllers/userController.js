@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const authService = require('../services/authService');
+const landmarkService = require('../services/landmarkService');
 
 const User = require('../models/User');
 
@@ -46,6 +47,24 @@ router.post('/register', async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 
+});
+
+router.get('/my-profile', async (req, res) => {
+    const user = await authService.getUser(req);
+
+    const landmarkIds = user.landmarks;
+
+    let landmarks = []
+
+    for (const landmarkId of landmarkIds) {
+        const landmark = await landmarkService.getOne(landmarkId);
+        landmarks.push(landmark)
+    }
+
+    console.log(landmarks);
+
+
+    res.json(landmarks);
 });
 
 module.exports = router;

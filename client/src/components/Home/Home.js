@@ -26,8 +26,12 @@ export const Home = () => {
             <div id="welcome">
                 <h1>Welcome to Landmark Browser</h1>
             </div>
+            {
+                landmarksSorted.length > 0 &&
 
-            <h1>Here are the most visited landmarks</h1>
+                <h1>Here are the most visited landmarks</h1>
+            }
+
 
             <div>
                 {landmarksSorted.length > 0
@@ -35,9 +39,13 @@ export const Home = () => {
                     : <h3 className="no-articles">No landmarks yet</h3>
                 }
             </div>
-            <p id="home-para">
-                <Link to='/all-landmarks'><em>Browse all landmarks</em></Link>
-            </p>
+            {
+                landmarksSorted.length > 0 &&
+
+                <p id="home-para">
+                    <Link to='/all-landmarks'><em>Browse all landmarks</em></Link>
+                </p>
+            }
 
         </section>
     );

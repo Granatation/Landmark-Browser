@@ -12,11 +12,12 @@ import { AllLandmarks } from './components/Landmarks/AllLandmarks/AllLandmarks';
 import { Details } from './components/Landmarks/Details/Details';
 import { Edit } from './components/Landmarks/Edit/Edit';
 import { Delete } from './components/Landmarks/Delete/Delete';
+import { Visit } from './components/Landmarks/Visit/Visit';
+import { MyProfile } from './components/MyProfile/MyProfile';
 
 import { AuthContext } from './contexts/AuthContext';
 import { LandmarkContext } from './contexts/LandmarkContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { Visit } from './components/Landmarks/Visit/Visit';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
               <Route path='/all-landmarks/:landmarkId/edit' element={<Edit />} />
               <Route path='/all-landmarks/:landmarkId/delete' element={<Delete />} />
               <Route path='/all-landmarks/:landmarkId/visit' element={<Visit />} />
+              <Route path='/my-profile' element={<MyProfile />} />
               <Route path='*' element={<PageNotFound />} />
             </Routes>
           </main>
