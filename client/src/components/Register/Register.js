@@ -88,7 +88,6 @@ export const Register = () => {
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"
-                        id="username"
                         name="username"
                         placeholder="someone"
                         onChange={changeHandler}
@@ -108,7 +107,6 @@ export const Register = () => {
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
-                        id="email"
                         name="email"
                         placeholder="email@sth.com"
                         onChange={changeHandler}
@@ -129,7 +127,6 @@ export const Register = () => {
                     <label htmlFor="password">Password:</label>
                     <input
                         type="password"
-                        id="password"
                         name="password"
                         placeholder="**********"
                         onChange={changeHandler}
@@ -150,7 +147,6 @@ export const Register = () => {
                     <label htmlFor="repass">Repeat password:</label>
                     <input
                         type="password"
-                        id="repass"
                         name="repass"
                         placeholder="**********"
                         onChange={changeHandler}

@@ -80,6 +80,11 @@ label[for="description"] {
 .addBtn:enabled:hover{
     background: rgb(66, 75, 92);
     color: antiquewhite;
+    cursor: pointer;
+}
+
+.addBtn:disabled:hover{
+    cursor: not-allowed;
 }
 
 .add-section label:nth-of-type(n+2) {

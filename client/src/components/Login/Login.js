@@ -37,7 +37,7 @@ export const Login = () => {
             return navigate('/404');
         }
     }, []);
-    
+
     useEffect(() => {
         setHasErrors(Object.values(errors)
             .map(x => Object.values(x).includes(true))

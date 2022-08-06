@@ -75,6 +75,11 @@ label[for="repass"] {
 .submit:enabled:hover{
     background: rgb(66, 75, 92);
     color: antiquewhite;
+    cursor: pointer;
+}
+
+.submit:disabled:hover{
+    cursor: not-allowed;
 }
 
 .auth-paragraph-login{

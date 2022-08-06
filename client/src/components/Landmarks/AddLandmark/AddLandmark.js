@@ -98,8 +98,8 @@ export const AddLandmark = () => {
                     <h1>Add a Landmark</h1>
                     <label htmlFor="name">Name:</label>
                     <input
+                        required
                         type="text"
-                        id="name"
                         name="name"
                         placeholder="name"
                         onChange={changeHandler}
@@ -118,8 +118,8 @@ export const AddLandmark = () => {
 
                     <label htmlFor="town">Town / City:</label>
                     <input
+                        required
                         type="text"
-                        id="town"
                         name="town"
                         onChange={changeHandler}
                         value={values.town}
@@ -137,8 +137,8 @@ export const AddLandmark = () => {
 
                     <label htmlFor="country">Country:</label>
                     <input
+                        required
                         type="text"
-                        id="country"
                         name="country"
                         onChange={changeHandler}
                         value={values.country}
@@ -156,8 +156,8 @@ export const AddLandmark = () => {
 
                     <label htmlFor="imageUrl">Image URL:</label>
                     <input
+                        required
                         type="text"
-                        id="imageUrl"
                         name="imageUrl"
                         onChange={changeHandler}
                         value={values.imageUrl}
@@ -170,8 +170,8 @@ export const AddLandmark = () => {
 
                     <label htmlFor="description">Description:</label>
                     <textarea
+                        required
                         type="text"
-                        id="description"
                         name="description"
                         onChange={changeHandler}
                         value={values.description}
