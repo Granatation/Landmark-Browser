@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import * as landmarkService from '../../../services/landmarkService';
-import { LandmarkContext } from "../../../contexts/LandmarkContext";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { SingleLandmark } from "../SingleLandmark/SingleLandmark";
+import * as authService from '../../services/authService';
+import { LandmarkContext } from "../../contexts/LandmarkContext";
+import { AuthContext } from "../../contexts/AuthContext";
+import { SingleLandmark } from "../Landmarks/SingleLandmark/SingleLandmark";
 
-export const AllLandmarksPaged = () => {
+export const MyProfilePaged = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
-    const { isAuth } = useContext(AuthContext);
-    
+    const { user,isAuth } = useContext(AuthContext);
     const [pages, setPages] = useState(0);
     const { pageNumber } = useParams();
     const navigate=useNavigate();
@@ -19,7 +18,7 @@ export const AllLandmarksPaged = () => {
             return navigate('/404');
         }
 
-        landmarkService.getAll()
+        authService.getUserLandmarks()
             .then(result => {
                 setLandmarks(result);
                 setPages(Math.ceil(result.length / 6))
@@ -36,7 +35,7 @@ export const AllLandmarksPaged = () => {
             <Link
                 className={Number(pageNumber) == i ? 'active' : null}
                 key={i}
-                to={`/all-landmarks/page/${i}`}
+                to={`/my-profile/page/${i}`}
             >
                 {i}
             </Link>);
@@ -44,20 +43,22 @@ export const AllLandmarksPaged = () => {
 
     const previousButtonHandler = () => {
         if (Number(pageNumber)-1>0){
-            navigate(`/all-landmarks/page/${Number(pageNumber)-1}`)
+            navigate(`/my-profile/page/${Number(pageNumber)-1}`)
         }
     }
 
     const nextButtonHandler = () => {
         if (Number(pageNumber)+1<=pages){
-            navigate(`/all-landmarks/page/${Number(pageNumber)+1}`)
+            navigate(`/my-profile/page/${Number(pageNumber)+1}`)
         }
     }
 
 
     return (
         <section id="all-landmarks-page">
-            <h1>All Landmarks</h1>
+            <div id="welcome">
+                <h1>{user.username}'s posts</h1>
+            </div>
 
             <div id="all-landmarks-container">
                 {currentPageLandmarks.length > 0

@@ -15,6 +15,7 @@ import { Edit } from './components/Landmarks/Edit/Edit';
 import { Delete } from './components/Landmarks/Delete/Delete';
 import { Visit } from './components/Landmarks/Visit/Visit';
 import { MyProfile } from './components/MyProfile/MyProfile';
+import { MyProfilePaged } from './components/MyProfile/MyProfilePaged';
 
 import { AuthContext } from './contexts/AuthContext';
 import { LandmarkContext } from './contexts/LandmarkContext';
@@ -44,17 +45,24 @@ function App() {
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
+
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/logout' element={<Logout />} />
+
               <Route path='/add-landmark' element={<AddLandmark />} />
+
               <Route path='/all-landmarks' element={<AllLandmarks />} />
               <Route path='/all-landmarks/page/:pageNumber' element={<AllLandmarksPaged />} />
+
               <Route path='/all-landmarks/:landmarkId' element={<Details />} />
               <Route path='/all-landmarks/:landmarkId/edit' element={<Edit />} />
               <Route path='/all-landmarks/:landmarkId/delete' element={<Delete />} />
               <Route path='/all-landmarks/:landmarkId/visit' element={<Visit />} />
+
               <Route path='/my-profile' element={<MyProfile />} />
+              <Route path='/my-profile/page/:pageNumber' element={<MyProfilePaged />} />
+
               <Route path='*' element={<PageNotFound />} />
             </Routes>
           </main>
