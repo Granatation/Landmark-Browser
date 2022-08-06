@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-
 import * as landmarkService from '../../../services/landmarkService';
 
 export const Visit = () => {
@@ -17,11 +16,9 @@ export const Visit = () => {
 
         landmarkService.visit(landmarkId)
             .then(() => {
-                navigate(`/all-landmarks/${landmarkId}`);
+                navigate(`/all-landmarks/${landmarkId}`,{ replace: true });
             })
-            .catch(() => {
-                navigate(`/all-landmarks/${landmarkId}`);
-            })
+            .catch(error => alert(error))
     });
 
     return null;

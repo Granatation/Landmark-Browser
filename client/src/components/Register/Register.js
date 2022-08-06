@@ -74,7 +74,7 @@ export const Register = () => {
         setErrors(state => ({
             ...state,
             username: {
-                minLength: values['username'].length < 6,
+                minLength: values['username'].length < 3,
                 maxLength: values['username'].length > 12
             }
         }));
@@ -97,7 +97,7 @@ export const Register = () => {
                     />
                     {
                         errors.username?.minLength &&
-                        <p className="error">Email must be at least 6 characters long!</p>
+                        <p className="error">Email must be at least 3 characters long!</p>
                     }
 
                     {

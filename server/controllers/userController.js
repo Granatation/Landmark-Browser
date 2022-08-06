@@ -61,9 +61,6 @@ router.get('/my-profile', async (req, res) => {
         landmarks.push(landmark)
     }
 
-    console.log(landmarks);
-
-
     res.json(landmarks);
 });
 

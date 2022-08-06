@@ -11,7 +11,6 @@ export const Login = () => {
     const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-
     const [hasErrors, setHasErrors] = useState(true)
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [errors, setErrors] = useState({

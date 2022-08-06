@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
@@ -22,7 +22,6 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
   const [user, setAuth] = useLocalStorage('auth', {})
-
   const [landmarks, setLandmarks] = useState([]);
 
   const isAuth = user?._id ? true : false
@@ -40,7 +39,7 @@ function App() {
       <div>
         <Header />
 
-        <LandmarkContext.Provider value={{ landmarks, setLandmarks }}>
+        <LandmarkContext.Provider value={{ landmarks, setLandmarks}}>
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
