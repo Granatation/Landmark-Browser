@@ -8,10 +8,10 @@ import { SingleLandmark } from "../Landmarks/SingleLandmark/SingleLandmark";
 
 export const MyProfilePaged = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
-    const { user,isAuth } = useContext(AuthContext);
+    const { user, isAuth } = useContext(AuthContext);
     const [pages, setPages] = useState(0);
     const { pageNumber } = useParams();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!isAuth) {
@@ -42,14 +42,14 @@ export const MyProfilePaged = () => {
     }
 
     const previousButtonHandler = () => {
-        if (Number(pageNumber)-1>0){
-            navigate(`/my-profile/page/${Number(pageNumber)-1}`)
+        if (Number(pageNumber) - 1 > 0) {
+            navigate(`/my-profile/page/${Number(pageNumber) - 1}`);
         }
     }
 
     const nextButtonHandler = () => {
-        if (Number(pageNumber)+1<=pages){
-            navigate(`/my-profile/page/${Number(pageNumber)+1}`)
+        if (Number(pageNumber) + 1 <= pages) {
+            navigate(`/my-profile/page/${Number(pageNumber) + 1}`);
         }
     }
 

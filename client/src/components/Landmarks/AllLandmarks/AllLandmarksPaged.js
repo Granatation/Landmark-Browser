@@ -3,33 +3,26 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import * as landmarkService from '../../../services/landmarkService';
 import { LandmarkContext } from "../../../contexts/LandmarkContext";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { SingleLandmark } from "../SingleLandmark/SingleLandmark";
 
 export const AllLandmarksPaged = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
-    const { isAuth } = useContext(AuthContext);
-    
     const [pages, setPages] = useState(0);
     const { pageNumber } = useParams();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isAuth) {
-            return navigate('/404');
-        }
-
         landmarkService.getAll()
             .then(result => {
                 setLandmarks(result);
-                setPages(Math.ceil(result.length / 6))
+                setPages(Math.ceil(result.length / 6));
             })
             .catch(error => alert(error))
     }, []);
 
-    const currentPageLandmarks = landmarks.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6))
+    const currentPageLandmarks = landmarks.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6));
 
-    let liItems = []
+    let liItems = [];
 
     for (let i = 1; i <= pages; i++) {
         liItems.push(
@@ -43,14 +36,14 @@ export const AllLandmarksPaged = () => {
     }
 
     const previousButtonHandler = () => {
-        if (Number(pageNumber)-1>0){
-            navigate(`/all-landmarks/page/${Number(pageNumber)-1}`)
+        if (Number(pageNumber) - 1 > 0) {
+            navigate(`/all-landmarks/page/${Number(pageNumber) - 1}`);
         }
     }
 
     const nextButtonHandler = () => {
-        if (Number(pageNumber)+1<=pages){
-            navigate(`/all-landmarks/page/${Number(pageNumber)+1}`)
+        if (Number(pageNumber) + 1 <= pages) {
+            navigate(`/all-landmarks/page/${Number(pageNumber) + 1}`);
         }
     }
 

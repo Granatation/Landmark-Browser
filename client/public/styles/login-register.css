@@ -64,13 +64,15 @@ label[for="repass"] {
     margin-top: 40px;
     margin-bottom: 40px;
     display: block;
+    border: 2px solid black;
+    transition: background-color .3s;
     font-size: 20px;
     color: rgb(66, 75, 92);
     background: antiquewhite;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-.submit:hover{
+.submit:enabled:hover{
     background: rgb(66, 75, 92);
     color: antiquewhite;
 }
