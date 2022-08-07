@@ -13,6 +13,8 @@ export const Details = () => {
 
     const [landmark, setLandmark] = useState({});
     const [creator, setCreator] = useState({});
+    const [isMap, setIsMap] = useState(false);
+
 
     useEffect(() => {
         if (!isAuth) {
@@ -27,9 +29,24 @@ export const Details = () => {
 
     }, []);
 
+    const onClickHandler = () => {
+        setIsMap(state => !state);
+    }
+
     return (
         <section id="details-section">
-            <img id="details-image-container" src={landmark.imageUrl} />
+            <div id="details-image-map-container">
+                <div id="details-image-container">
+                    {isMap 
+                    ?  <Map id="map" location={landmark.name}/>
+                    : <img src={landmark.imageUrl} /> 
+                    }
+                   
+                </div>
+                <button onClick={onClickHandler} id="map-btn">{isMap ? 'Image' : 'Map'}</button>
+                <p>{isMap ? 'See the image' : 'See the location on map'}</p>
+            </div>
+
 
             <div id="details-container">
                 <h1>Landmark Details</h1>
@@ -52,7 +69,6 @@ export const Details = () => {
                     </div>
                 }
 
-                <Map/>
 
             </div>
 

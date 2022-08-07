@@ -3,7 +3,6 @@
     margin: auto;
     margin-top: 150px;
     margin-bottom: 150px;
-    border-radius: 20px;
     width: 1000px;
     height: 500px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
@@ -49,18 +48,60 @@
     position: relative;
 }
 
-#details-image-container {
-    object-fit: contain;
+#details-image-map-container {
     background-color: #30343a;
     float: left;
     width: 40%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    position: relative;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
+#details-image-container {
+    background-color: #30343a;
+    margin: auto;
+    width: 400px;
+    height:373px;
+    display: flex;
+    justify-content: center;
+}
+
+#details-image-container img {
+    object-fit: contain;
+    max-width: 400px;
+    max-height: 500px;
+}
+
+#map{
+    width: 400px;
+    height:373px;
+}
+
+#details-image-map-container button {
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+}
+
+#details-image-map-container p {
+    position: absolute;
+    left: 105px;
+    width: 55%;
+    text-align: center;
+    display: none;
+    bottom: 20px;
+    margin: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #30343a;
+    background: antiquewhite;
+    border: 2px solid black;
+    border-left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #edit-btn,
-#delete-btn {
+#delete-btn,
+#map-btn {
     width: 90px;
     text-align: center;
     display: inline-block;
@@ -78,9 +119,15 @@
 }
 
 #edit-btn:hover,
-#delete-btn:hover {
+#delete-btn:hover,
+#map-btn:hover {
     color: #30343a;
     background: antiquewhite;
+    cursor: pointer;
+}
+
+#map-btn:hover+p{
+    display: block;
 }
 
 #details-btn-container {

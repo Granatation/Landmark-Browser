@@ -1,20 +1,30 @@
-import React, { useState } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import React, { useState, useEffect } from "react";
+import { GoogleMap, Marker, useLoadScript, } from "@react-google-maps/api";
 
-export const Map = () => {
-    const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
+export const Map = (props) => {
+    const [center, setCenter] = useState({ lat: 0, lng: 0 });
 
-    return (
-        <>
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: ""
+    });
+
+
+    const renderMap = () => {
+        return (
             <GoogleMap
                 center={center}
-                zoom={5}
+                zoom={15}
                 mapContainerStyle={{
-                    height: "50vh",
-                    width: "100%"
+                    height: "373px",
+                    width: "400px"
                 }}
-            />
-            <Marker position={center} />
-        </>
-    );
+            >
+                <Marker
+                    position={center}
+                />
+            </GoogleMap>
+        );
+    };
+
+    return isLoaded ? renderMap() : null;
 }
