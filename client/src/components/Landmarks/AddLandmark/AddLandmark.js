@@ -53,7 +53,7 @@ export const AddLandmark = () => {
             ...state,
             [e.target.name]: {
                 minLength: values[e.target.name].length < 3,
-                maxLength: values[e.target.name].length > 15
+                maxLength: values[e.target.name].length > 20
             }
         }));
     }
@@ -113,7 +113,7 @@ export const AddLandmark = () => {
 
                     {
                         errors.name?.maxLength &&
-                        <p className="error">Name can't be more than 15 characters long!</p>
+                        <p className="error">Name can't be more than 20 characters long!</p>
                     }
 
                     <label htmlFor="town">Town / City:</label>
@@ -121,6 +121,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="town"
+                        placeholder="Sofia"
                         onChange={changeHandler}
                         value={values.town}
                         onBlur={(e) => lengthValidator(e)}
@@ -132,7 +133,7 @@ export const AddLandmark = () => {
 
                     {
                         errors.town?.maxLength &&
-                        <p className="error">Town can't be more than 15 characters long!</p>
+                        <p className="error">Town can't be more than 20 characters long!</p>
                     }
 
                     <label htmlFor="country">Country:</label>
@@ -140,6 +141,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="country"
+                        placeholder="Bulgaria"
                         onChange={changeHandler}
                         value={values.country}
                         onBlur={(e) => lengthValidator(e)}
@@ -151,7 +153,7 @@ export const AddLandmark = () => {
 
                     {
                         errors.country?.maxLength &&
-                        <p className="error">Country can't be more than 15 characters long!</p>
+                        <p className="error">Country can't be more than 20 characters long!</p>
                     }
 
                     <label htmlFor="imageUrl">Image URL:</label>

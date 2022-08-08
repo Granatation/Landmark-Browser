@@ -38,7 +38,7 @@ export const Details = () => {
             <div id="details-image-map-container">
                 <div id="details-image-container">
                     {isMap 
-                    ?  <Map id="map" location={landmark.name}/>
+                    ?  <Map id="map" location={landmark}/>
                     : <img src={landmark.imageUrl} /> 
                     }
                    
