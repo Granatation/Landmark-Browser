@@ -9,11 +9,11 @@ export const login = (email, password) =>
 export const register = (username, email, password, repass) =>
     request.post(`${baseUrl}/register`, { username, email, password, repass });
 
-export const logout = async () => {
+export const logout = () => {
     try {
         localStorage.clear();
     } catch (error) {
-        console.log(error);
+        return error
     }
 }
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import { Error } from "../Error/Error";
 
 import * as authService from '../../services/authService';
 
@@ -15,7 +16,9 @@ export const Login = () => {
 
     const [btnDisabled, setBtnDisabled] = useState(true);
 
-    const [errors, setErrors] = useState({
+    const [serverError, setServerError] = useState('')
+
+    const [clientErrors, setClientErrors] = useState({
         email: {},
         password: {}
     });
@@ -39,10 +42,10 @@ export const Login = () => {
     }, []);
 
     useEffect(() => {
-        setHasErrors(Object.values(errors)
+        setHasErrors(Object.values(clientErrors)
             .map(x => Object.values(x).includes(true))
             .includes(true))
-    }, [errors])
+    }, [clientErrors])
 
     useEffect(() => {
         setBtnDisabled(hasErrors ||
@@ -58,14 +61,16 @@ export const Login = () => {
 
         authService.login(email, password)
             .then(result => {
-                userLogin(result)
-                if (result) navigate('/');
+                if (!result.message) {
+                    userLogin(result);
+                    navigate('/');
+                } else throw result
             })
             .catch(error => alert(error.message))
     }
 
     const lengthValidator = (e) => {
-        setErrors(state => ({
+        setClientErrors(state => ({
             ...state,
             [e.target.name]: {
                 minLength: values[e.target.name].length < 10,
@@ -92,12 +97,12 @@ export const Login = () => {
                     />
 
                     {
-                        errors.email?.minLength &&
+                        clientErrors.email?.minLength &&
                         <p className="error">Email must be at least 10 characters long!</p>
                     }
 
                     {
-                        errors.email?.maxLength &&
+                        clientErrors.email?.maxLength &&
                         <p className="error">Email can't be more than 25 characters long!</p>
                     }
 
@@ -113,12 +118,12 @@ export const Login = () => {
                     />
 
                     {
-                        errors.password?.minLength &&
+                        clientErrors.password?.minLength &&
                         <p className="error">Password must be at least 10 characters long!</p>
                     }
 
                     {
-                        errors.password?.maxLength &&
+                        clientErrors.password?.maxLength &&
                         <p className="error">Password can't be more than 25 characters long!</p>
                     }
 

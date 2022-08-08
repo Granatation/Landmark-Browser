@@ -2,7 +2,7 @@ export const request = async (method, url, data) => {
     try {
         const user = localStorage.getItem('auth');
         const auth = JSON.parse(user || '{}');
-        
+
         let headers = {};
 
         if (auth.accessToken) {
@@ -30,12 +30,12 @@ export const request = async (method, url, data) => {
         const result = await response.json();
 
         if (result.message) {
-            throw Error(result.message)
+            throw result
         }
 
         return result;
     } catch (error) {
-        alert(error);
+        return error
     }
 }
 

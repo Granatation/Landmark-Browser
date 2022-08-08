@@ -3,65 +3,81 @@ const router = require('express').Router();
 const authService = require('../services/authService');
 const landmarkService = require('../services/landmarkService');
 
+const errorChecker = require('../utils/errorChecker');
+
 const User = require('../models/User');
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-
     try {
+        const { email, password } = req.body;
+
         if (email == '' || password == '') {
-            throw new Error('Empty fields!')
+            throw new Error('Empty fields!');
         }
 
         const result = await authService.login(email, password);
+        errorChecker(result);
 
-        if (!result.email) {
-            throw result
-        }
-        res.json(result);
+        res.json(result)
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.json({ message: error.message });
     }
 
 });
 
 router.post('/register', async (req, res) => {
-
-    const { username, email, password, repass } = req.body;
     try {
-        const existing = await User.findOne({ email });
+        const { username, email, password, repass } = req.body;
 
-        if (existing) {
-            throw new Error('Email is taken!')
+        const existingUsername = await User.findOne({ username });
+
+        if (existingUsername) {
+            throw new Error('Username is taken!');
+        }
+
+        const existingEmail = await User.findOne({ email });
+
+        if (existingEmail) {
+            throw new Error('Email is taken!');
         }
 
         if (password !== repass) {
-            throw new Error('Password missmatch!')
+            throw new Error('Password missmatch!');
         }
 
-        const accessToken = await authService.createToken(email)
-        const createdUser = await authService.create({ username, email, password, accessToken })
+        const accessToken = await authService.createToken(email);
+        errorChecker(accessToken);
 
-        res.status(201).json(createdUser);
+        const createdUser = await authService.create({ username, email, password, accessToken });
+        errorChecker(createdUser);
+
+        res.json(createdUser);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.json({ message: error.message });
     }
 
 });
 
 router.get('/my-profile', async (req, res) => {
-    const user = await authService.getUser(req);
+    try {
+        const user = await authService.getUser(req);
+        errorChecker(user);
 
-    const landmarkIds = user.landmarks;
+        const landmarkIds = user.landmarks;
 
-    let landmarks = []
+        let landmarks = [];
 
-    for (const landmarkId of landmarkIds) {
-        const landmark = await landmarkService.getOne(landmarkId);
-        landmarks.push(landmark)
+        for (const landmarkId of landmarkIds) {
+            const landmark = await landmarkService.getOne(landmarkId);
+            errorChecker(landmark);
+            landmarks.push(landmark);
+        }
+
+        res.json(landmarks);
+    } catch (error) {
+        req.json({ message: error.message });
     }
 
-    res.json(landmarks);
 });
 
 module.exports = router;
