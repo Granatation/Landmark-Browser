@@ -1,7 +1,9 @@
 export const Error = (props) => {
     return (
-        <div id="error-container">
-            <p>{props.message}</p>
-        </div>
+        <p
+            id={props.message === '' ? "error-paragraph-disabled" : "error-paragraph"}
+        >
+            {props.message}
+        </p>
     );
 }

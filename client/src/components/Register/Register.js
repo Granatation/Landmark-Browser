@@ -4,15 +4,18 @@ import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
+import { Error } from "../Error/Error";
+
 import * as authService from '../../services/authService';
 
 export const Register = () => {
     const { userLogin, isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [errors, setErrors] = useState({})
+    const [clientErrors, setClientErrors] = useState({})
     const [hasErrors, setHasErrors] = useState(true)
     const [btnDisabled, setBtnDisabled] = useState(true)
+    const [serverError, setServerError] = useState('')
     const [values, setValues] = useState({
         username: '',
         email: '',
@@ -34,10 +37,10 @@ export const Register = () => {
     }, []);
 
     useEffect(() => {
-        setHasErrors(Object.values(errors)
+        setHasErrors(Object.values(clientErrors)
             .map(x => Object.values(x).includes(true))
             .includes(true))
-    }, [errors]);
+    }, [clientErrors]);
 
     useEffect(() => {
         setBtnDisabled(hasErrors ||
@@ -54,14 +57,18 @@ export const Register = () => {
 
         authService.register(username, email, password, repass)
             .then(result => {
-                userLogin(result)
-                if (result) navigate('/');
+                if (!result.message) {
+                    userLogin(result);
+                    navigate('/');
+                } else throw result
             })
-            .catch(error => alert(error.message))
+            .catch(error => {
+                setServerError(error.message);
+            })
     }
 
     const lengthValidator = (e) => {
-        setErrors(state => ({
+        setClientErrors(state => ({
             ...state,
             [e.target.name]: {
                 minLength: values[e.target.name].length < 10,
@@ -71,7 +78,7 @@ export const Register = () => {
     }
 
     const usernameLengthValidator = () => {
-        setErrors(state => ({
+        setClientErrors(state => ({
             ...state,
             username: {
                 minLength: values['username'].length < 3,
@@ -81,10 +88,11 @@ export const Register = () => {
     }
 
     return (
-        <section id="register" className="form-section">
+        <section id={serverError === '' ? "register" : "register-extended"} className="form-section">
             <form onSubmit={onSubmit}>
                 <div>
                     <h1>Register</h1>
+                    <Error message={serverError} />
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"
@@ -95,12 +103,12 @@ export const Register = () => {
                         onBlur={() => usernameLengthValidator()}
                     />
                     {
-                        errors.username?.minLength &&
+                        clientErrors.username?.minLength &&
                         <p className="error">Email must be at least 3 characters long!</p>
                     }
 
                     {
-                        errors.username?.maxLength &&
+                        clientErrors.username?.maxLength &&
                         <p className="error">Email can't be more than 12 characters long!</p>
                     }
 
@@ -115,12 +123,12 @@ export const Register = () => {
                     />
 
                     {
-                        errors.email?.minLength &&
+                        clientErrors.email?.minLength &&
                         <p className="error">Email must be at least 10 characters long!</p>
                     }
 
                     {
-                        errors.email?.maxLength &&
+                        clientErrors.email?.maxLength &&
                         <p className="error">Email can't be more than 25 characters long!</p>
                     }
 
@@ -135,12 +143,12 @@ export const Register = () => {
                     />
 
                     {
-                        errors.password?.minLength &&
+                        clientErrors.password?.minLength &&
                         <p className="error">Password must be at least 10 characters long!</p>
                     }
 
                     {
-                        errors.password?.maxLength &&
+                        clientErrors.password?.maxLength &&
                         <p className="error">Password can't be more than 25 characters long!</p>
                     }
 
@@ -155,12 +163,12 @@ export const Register = () => {
                     />
 
                     {
-                        errors.repass?.minLength &&
+                        clientErrors.repass?.minLength &&
                         <p className="error">Password must be at least 10 characters long!</p>
                     }
 
                     {
-                        errors.repass?.maxLength &&
+                        clientErrors.repass?.maxLength &&
                         <p className="error">Password can't be more than 25 characters long!</p>
                     }
 

@@ -3,6 +3,8 @@ const router = require('express').Router();
 const landmarkService = require('../services/landmarkService');
 const authService = require('../services/authService');
 
+const errorChecker= require('../utils/errorChecker')
+
 router.post('/add-landmark', async (req, res) => {
     try {
         const { name, town, country, imageUrl, description } = req.body;

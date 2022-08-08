@@ -1,5 +1,5 @@
 const errorChecker = (error) => {
-    if (error.message) {
+    if (error?.message) {
         throw error;
     }
 }

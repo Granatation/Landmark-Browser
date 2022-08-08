@@ -16,8 +16,8 @@ export const Home = () => {
             .catch(error => alert(error))
     }, []);
 
-    let landmarksSorted = landmarks.sort((a, b) => b.visitors.length - a.visitors.length)
-    landmarksSorted = landmarksSorted.slice(0, 3);
+    let landmarksSorted = landmarks?.sort((a, b) => b.visitors.length - a.visitors.length)
+    landmarksSorted = landmarksSorted?.slice(0, 3);
 
     return (
 

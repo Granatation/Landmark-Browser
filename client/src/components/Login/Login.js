@@ -66,7 +66,9 @@ export const Login = () => {
                     navigate('/');
                 } else throw result
             })
-            .catch(error => alert(error.message))
+            .catch(error => {
+                setServerError(error.message);
+            })
     }
 
     const lengthValidator = (e) => {
@@ -81,10 +83,11 @@ export const Login = () => {
 
 
     return (
-        <section id="login" className="form-section">
+        <section id={serverError === '' ? "login" : "login-extended"} className="form-section">
             <form onSubmit={onSubmit}>
                 <div>
                     <h1>Login</h1>
+                    <Error message={serverError}/>
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"

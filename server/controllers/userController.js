@@ -30,13 +30,15 @@ router.post('/register', async (req, res) => {
         const { username, email, password, repass } = req.body;
 
         const existingUsername = await User.findOne({ username });
+        errorChecker(existingUsername);
 
         if (existingUsername) {
             throw new Error('Username is taken!');
         }
 
         const existingEmail = await User.findOne({ email });
-
+        errorChecker(existingEmail);
+        
         if (existingEmail) {
             throw new Error('Email is taken!');
         }
@@ -53,6 +55,7 @@ router.post('/register', async (req, res) => {
 
         res.json(createdUser);
     } catch (error) {
+        console.log(error);
         res.json({ message: error.message });
     }
 

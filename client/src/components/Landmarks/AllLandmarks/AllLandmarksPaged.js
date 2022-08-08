@@ -20,7 +20,7 @@ export const AllLandmarksPaged = () => {
             .catch(error => alert(error))
     }, []);
 
-    const currentPageLandmarks = landmarks.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6));
+    const currentPageLandmarks = landmarks?.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6));
 
     let liItems = [];
 
