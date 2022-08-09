@@ -15,8 +15,10 @@ export const Visit = () => {
         }
 
         landmarkService.visit(landmarkId)
-            .then(() => {
-                navigate(`/all-landmarks/${landmarkId}`,{ replace: true });
+            .then(result => {
+                if(!result.message){
+                    navigate(`/all-landmarks/${landmarkId}`,{ replace: true });
+                }else throw result
             })
             .catch(error => alert(error))
     });

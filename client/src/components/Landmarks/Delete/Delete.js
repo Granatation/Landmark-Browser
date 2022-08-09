@@ -15,12 +15,12 @@ export const Delete = () => {
         }
 
         landmarkService.del(landmarkId)
-            .then(() => {
-                navigate('/all-landmarks');
+            .then(result => {
+                if (!result.message) {
+                    navigate('/all-landmarks');
+                } else throw result
             })
-            .catch(() => {
-                navigate('/all-landmarks');
-            })
+            .catch(error => alert(error))
     });
 
     return null;
