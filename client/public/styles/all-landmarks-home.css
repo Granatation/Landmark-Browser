@@ -116,6 +116,10 @@ h2 {
     border: 1px solid antiquewhite;
 }
 
+.pagination button:hover{
+    cursor:pointer;
+}
+
 .pagination a.active {
     background-color: antiquewhite;
     color: #30343a;

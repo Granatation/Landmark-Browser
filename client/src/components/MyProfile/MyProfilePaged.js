@@ -5,10 +5,12 @@ import * as authService from '../../services/authService';
 import { LandmarkContext } from "../../contexts/LandmarkContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { SingleLandmark } from "../Landmarks/SingleLandmark/SingleLandmark";
+import { Error } from "../Error/Error";
 
 export const MyProfilePaged = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
     const { user, isAuth } = useContext(AuthContext);
+    const [serverError, setServerError] = useState('');
     const [pages, setPages] = useState(0);
     const { pageNumber } = useParams();
     const navigate = useNavigate();
@@ -20,10 +22,12 @@ export const MyProfilePaged = () => {
 
         authService.getUserLandmarks()
             .then(result => {
-                setLandmarks(result);
-                setPages(Math.ceil(result.length / 6))
+                if(!result.message){
+                    setLandmarks(result);
+                    setPages(Math.ceil(result.length / 6))
+                }else throw result         
             })
-            .catch(error => alert(error))
+            .catch(error => setServerError(error.message))
     }, []);
 
     const currentPageLandmarks = landmarks.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6))
@@ -59,6 +63,8 @@ export const MyProfilePaged = () => {
             <div id="welcome">
                 <h1>{user.username}'s posts</h1>
             </div>
+
+            <Error message={serverError} />
 
             <div id="all-landmarks-container">
                 {currentPageLandmarks.length > 0

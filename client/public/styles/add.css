@@ -3,11 +3,18 @@
     border-radius: 20px;
     background-color: rgb(66, 75, 92);
     width: 600px;
-    height:840px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#add{
+    height:840px;
+}
+
+#add-extended{
+    height:893px;
 }
 
 .add-section h1{

@@ -4,20 +4,24 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as landmarkService from '../../../services/landmarkService';
 import { LandmarkContext } from "../../../contexts/LandmarkContext";
 import { SingleLandmark } from "../SingleLandmark/SingleLandmark";
+import { Error } from "../../Error/Error";
 
 export const AllLandmarksPaged = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
     const [pages, setPages] = useState(0);
+    const [serverError, setServerError] = useState('');
     const { pageNumber } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         landmarkService.getAll()
             .then(result => {
-                setLandmarks(result);
-                setPages(Math.ceil(result.length / 6));
+                if (!result.message) {
+                    setLandmarks(result);
+                    setPages(Math.ceil(result.length / 6));
+                } else throw result
             })
-            .catch(error => alert(error))
+            .catch(error => setServerError(error.message))
     }, []);
 
     const currentPageLandmarks = landmarks?.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6));
@@ -47,10 +51,11 @@ export const AllLandmarksPaged = () => {
         }
     }
 
-
     return (
         <section id="all-landmarks-page">
             <h1>All Landmarks</h1>
+
+            <Error message={serverError} />
 
             <div id="all-landmarks-container">
                 {currentPageLandmarks.length > 0

@@ -16,7 +16,7 @@ export const Login = () => {
 
     const [btnDisabled, setBtnDisabled] = useState(true);
 
-    const [serverError, setServerError] = useState('')
+    const [serverError, setServerError] = useState('');
 
     const [clientErrors, setClientErrors] = useState({
         email: {},
@@ -66,9 +66,7 @@ export const Login = () => {
                     navigate('/');
                 } else throw result
             })
-            .catch(error => {
-                setServerError(error.message);
-            })
+            .catch(error =>setServerError(error.message))
     }
 
     const lengthValidator = (e) => {

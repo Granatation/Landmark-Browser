@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-
+import { Error } from "../../Error/Error";
 import * as landmarkService from '../../../services/landmarkService';
 
 export const Edit = () => {
@@ -10,9 +10,10 @@ export const Edit = () => {
     const { landmarkId } = useParams();
     const navigate = useNavigate();
 
-    const [errors, setErrors] = useState({})
-    const [hasErrors, setHasErrors] = useState(true)
-    const [btnDisabled, setBtnDisabled] = useState(true)
+    const [serverError, setServerError] = useState('');
+    const [errors, setErrors] = useState({});
+    const [hasErrors, setHasErrors] = useState(true);
+    const [btnDisabled, setBtnDisabled] = useState(true);
     const [values, setValues] = useState({
         name: '',
         town: '',
@@ -27,13 +28,18 @@ export const Edit = () => {
         }
 
         landmarkService.getOne(landmarkId)
-            .then(result => setValues({
-                name: result.landmark.name,
-                town: result.landmark.town,
-                country: result.landmark.country,
-                imageUrl: result.landmark.imageUrl,
-                description: result.landmark.description
-            }))
+            .then(result => {
+                if (!result.message) {
+                    setValues({
+                        name: result.landmark.name,
+                        town: result.landmark.town,
+                        country: result.landmark.country,
+                        imageUrl: result.landmark.imageUrl,
+                        description: result.landmark.description
+                    })
+                }else throw result
+            })
+            .catch(error => setServerError(error.message))
     }, []);
 
     useEffect(() => {
@@ -95,17 +101,20 @@ export const Edit = () => {
         const { name, town, country, imageUrl, description } = values;
 
         landmarkService.edit(landmarkId, { name, town, country, imageUrl, description })
-            .then(() => {
-                navigate(`/all-landmarks/${landmarkId}`);
+            .then(result => {
+                if (!result.message) {
+                    navigate(`/all-landmarks/${landmarkId}`);
+                }
             })
-            .catch(error => alert(error.message))
+            .catch(error => setServerError(error.message))
     }
 
     return (
-        <section id="add" className="add-section">
+        <section id={serverError === '' ? "add" : "add-extended"} className="add-section">
             <form onSubmit={onSubmit}>
                 <div>
                     <h1>Edit</h1>
+                    <Error message={serverError} />
                     <label htmlFor="name">Name:</label>
                     <input
                         type="text"

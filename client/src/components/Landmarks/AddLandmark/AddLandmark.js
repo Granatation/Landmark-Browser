@@ -2,16 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-
+import { Error } from "../../Error/Error";
 import * as landmarkService from '../../../services/landmarkService';
 
 export const AddLandmark = () => {
     const { isAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [errors, setErrors] = useState({})
-    const [hasErrors, setHasErrors] = useState(true)
-    const [btnDisabled, setBtnDisabled] = useState(true)
+    const [errors, setErrors] = useState({});
+    const [hasErrors, setHasErrors] = useState(true);
+    const [btnDisabled, setBtnDisabled] = useState(true);
+    const [serverError, setServerError] = useState('');
     const [values, setValues] = useState({
         name: '',
         town: '',
@@ -85,17 +86,20 @@ export const AddLandmark = () => {
         const { name, town, country, imageUrl, description } = values;
 
         landmarkService.add({ name, town, country, imageUrl, description })
-            .then(() => {
-                navigate('/all-landmarks');
+            .then(result => {
+                if(!result.message){
+                    navigate('/all-landmarks');
+                }else throw result
             })
-            .catch(error => alert(error.message))
+            .catch(error => setServerError(error.message))
     }
 
     return (
-        <section id="add" className="add-section">
+        <section id={serverError === '' ? "add" : "add-extended"} className="add-section">
             <form onSubmit={onSubmit}>
                 <div>
                     <h1>Add a Landmark</h1>
+                    <Error message={serverError} />
                     <label htmlFor="name">Name:</label>
                     <input
                         required

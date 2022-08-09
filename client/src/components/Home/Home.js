@@ -1,19 +1,23 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
 import { LandmarkContext } from "../../contexts/LandmarkContext";
 import { SingleLandmark } from "../Landmarks/SingleLandmark/SingleLandmark";
 import * as landmarkService from '../../services/landmarkService';
+import { Error } from "../Error/Error";
 
 export const Home = () => {
     const { landmarks, setLandmarks } = useContext(LandmarkContext);
+    const [serverError, setServerError] = useState('');
 
     useEffect(() => {
         landmarkService.getAll()
             .then(result => {
-                setLandmarks(result);
+                if (!result.message) {
+                    setLandmarks(result);
+                } else throw result
             })
-            .catch(error => alert(error))
+            .catch(error => setServerError(error.message))
     }, []);
 
     let landmarksSorted = landmarks?.sort((a, b) => b.visitors.length - a.visitors.length)
@@ -26,6 +30,9 @@ export const Home = () => {
             <div id="welcome">
                 <h1>Welcome to Landmark Browser</h1>
             </div>
+
+            <Error message={serverError} />
+
             {
                 landmarksSorted.length > 0 &&
 

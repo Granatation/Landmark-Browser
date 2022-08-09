@@ -28,7 +28,7 @@ export const request = async (method, url, data) => {
         const response = await buildRequest;
 
         const result = await response.json();
-        console.log(result);
+        
         if (result.message) {
             throw result
         }

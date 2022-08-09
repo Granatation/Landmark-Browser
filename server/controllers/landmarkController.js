@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const landmarkService = require('../services/landmarkService');
 const authService = require('../services/authService');
-
-const errorChecker= require('../utils/errorChecker')
+const Landmark = require('../models/Landmark')
+const errorChecker = require('../utils/errorChecker')
 
 router.post('/add-landmark', async (req, res) => {
     try {
@@ -11,6 +11,13 @@ router.post('/add-landmark', async (req, res) => {
 
         if (name == '' || town == '' || country == '' || imageUrl == '' || description == '') {
             throw new Error('Empty fields!')
+        }
+
+        const existingLandmark = await Landmark.findOne({ name });
+        errorChecker(existingLandmark);
+
+        if (existingLandmark) {
+            throw new Error('This landmark is already posted!');
         }
 
         const user = await authService.getUser(req);

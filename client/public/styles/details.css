@@ -20,7 +20,7 @@
     justify-content: center;
 }
 
-#details-container>p {
+#details-container>p:nth-of-type(n+2){
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin-left: 50px;
