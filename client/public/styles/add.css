@@ -27,7 +27,7 @@
     margin-bottom: 0;
 }
 
-.add-section>input[type="text"]{
+.add-section input[type="text"]{
     background: antiquewhite;
     padding: 6px;
     font-size: 24px;
