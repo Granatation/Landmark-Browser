@@ -10,6 +10,39 @@
 
 }
 
+#search-bar{
+    background: antiquewhite;
+    padding: 6px;
+    margin-top: 50px;
+    margin-left:250px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    color: rgb(66, 75, 92);
+    height:20px;
+    display: inline-block;
+    width: 50%;
+}
+
+#search-button{
+    width:80px;
+    margin-left: 20px;
+    height:40px;
+    margin-top: 50px;
+    border: 2px solid black;
+    transition: background-color .3s;
+    font-size: 20px;
+    color: rgb(66, 75, 92);
+    background: antiquewhite;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#search-button:hover{
+    background: rgb(66, 75, 92);
+    color: antiquewhite;
+    cursor: pointer;
+}
+
 #all-landmarks-page h1,
 h3 {
     font-family: Arial, Helvetica, sans-serif;

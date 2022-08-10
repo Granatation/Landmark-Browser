@@ -34,10 +34,10 @@
     margin-bottom: 0px;
 }
 
-input[type="email"],
-input[type="text"],
-input[type="password"],
-input[for="repass"] {
+.form-section input[type="email"],
+.form-section input[type="text"],
+.form-section input[type="password"],
+.form-section input[for="repass"] {
     background: antiquewhite;
     padding: 6px;
     font-size: 24px;
