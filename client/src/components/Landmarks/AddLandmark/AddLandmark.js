@@ -105,7 +105,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="name"
-                        placeholder="name"
+                        placeholder="Name"
                         onChange={changeHandler}
                         value={values.name}
                         onBlur={(e) => lengthValidator(e)}
@@ -125,7 +125,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="town"
-                        placeholder="Sofia"
+                        placeholder="Town or city name"
                         onChange={changeHandler}
                         value={values.town}
                         onBlur={(e) => lengthValidator(e)}
@@ -145,7 +145,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="country"
-                        placeholder="Bulgaria"
+                        placeholder="Country name"
                         onChange={changeHandler}
                         value={values.country}
                         onBlur={(e) => lengthValidator(e)}
@@ -165,6 +165,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="imageUrl"
+                        placeholder="https://..."
                         onChange={changeHandler}
                         value={values.imageUrl}
                         onBlur={() => imageUrlValidator()}
@@ -179,6 +180,7 @@ export const AddLandmark = () => {
                         required
                         type="text"
                         name="description"
+                        placeholder="Short description"
                         onChange={changeHandler}
                         value={values.description}
                         onBlur={() => descriptionValidator()}

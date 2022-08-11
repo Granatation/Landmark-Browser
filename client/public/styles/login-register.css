@@ -92,7 +92,7 @@ label[for="repass"] {
 
 .auth-paragraph-login{
     color: antiquewhite;
-    font-size: 20px;
+    font-size: 19px;
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     bottom: 30px;
@@ -100,9 +100,17 @@ label[for="repass"] {
     right:100px;
 }
 
+.auth-paragraph-login a{
+    color: antiquewhite;
+}
+
+.auth-paragraph-register a{
+    color: antiquewhite;
+}
+
 .auth-paragraph-register{
     color: antiquewhite;
-    font-size: 20px;
+    font-size: 19px;
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     bottom: 30px;

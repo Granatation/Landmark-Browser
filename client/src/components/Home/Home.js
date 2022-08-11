@@ -28,7 +28,7 @@ export const Home = () => {
 
         <section id="all-landmarks-page">
             <div id="welcome">
-                <h1>Welcome to Landmark Browser</h1>
+                <h1>Welcome to Landmark Browser!</h1>
             </div>
 
             <Error message={serverError} />
@@ -36,7 +36,7 @@ export const Home = () => {
             {
                 landmarksSorted.length > 0 &&
 
-                <h1>Here are the most visited landmarks</h1>
+                <h1>Here are the most visited landmarks:</h1>
             }
 
 

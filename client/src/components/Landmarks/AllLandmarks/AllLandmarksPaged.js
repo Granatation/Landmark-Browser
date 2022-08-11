@@ -29,14 +29,6 @@ export const AllLandmarksPaged = () => {
             .catch(error => setServerError(error.message))
     }, []);
 
-    useEffect(() => {
-        if (searchString === '') {
-            setPages(Math.ceil(landmarks.length / 6));
-        } else {
-            setPages(Math.ceil(searchString.length / 6));
-        }
-    }, [searchString])
-
     const currentPageLandmarks = filteredLandmarks?.slice((0 + (Number(pageNumber) - 1) * 6), (6 + (Number(pageNumber) - 1) * 6));
 
     let liItems = [];
@@ -60,6 +52,14 @@ export const AllLandmarksPaged = () => {
         e.preventDefault()
         setFilteredLandmarks(landmarks
             .filter(x => x.name.toLowerCase().includes(searchString.toLowerCase())));
+
+        if (searchString === '') {
+            setPages(Math.ceil(landmarks.length / 6));
+        } else {
+            setPages(Math.ceil(landmarks
+                .filter(x => x.name.toLowerCase().includes(searchString.toLowerCase()))
+                .length / 6));
+        }
     }
 
     const previousButtonHandler = () => {

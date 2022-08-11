@@ -97,7 +97,7 @@ export const Register = () => {
                     <input
                         type="text"
                         name="username"
-                        placeholder="someone"
+                        placeholder="Username"
                         onChange={changeHandler}
                         value={values.username}
                         onBlur={() => usernameLengthValidator()}
@@ -179,7 +179,7 @@ export const Register = () => {
                     }
 
                     <p className="auth-paragraph-register">
-                        <span><em>If you already have profile click <Link to="/login">here</Link></em></span>
+                        <span><em>If you already have a profile click <Link to="/login">here</Link></em></span>
                     </p>
                 </div>
             </form>

@@ -129,6 +129,9 @@ h2 {
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
+}
+
+#home-para a{
     color: antiquewhite;
 }
 
