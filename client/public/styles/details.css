@@ -44,6 +44,10 @@
     height: 100%;
 }
 
+#details-section p a{
+    color: antiquewhite;
+}
+
 #details-container {
     position: relative;
 }

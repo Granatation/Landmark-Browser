@@ -9,7 +9,7 @@ import { Logout } from './components/Logout/Logout';
 import { AddLandmark } from './components/Landmarks/AddLandmark/AddLandmark';
 import { PageNotFound } from './components/404/404';
 import { AllLandmarks } from './components/Landmarks/AllLandmarks/AllLandmarks';
-import {AllLandmarksPaged} from './components/Landmarks/AllLandmarks/AllLandmarksPaged'
+import { AllLandmarksPaged } from './components/Landmarks/AllLandmarks/AllLandmarksPaged';
 import { Details } from './components/Landmarks/Details/Details';
 import { Edit } from './components/Landmarks/Edit/Edit';
 import { Delete } from './components/Landmarks/Delete/Delete';
@@ -23,10 +23,10 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 
 function App() {
-  const [user, setAuth] = useLocalStorage('auth', {})
+  const [user, setAuth] = useLocalStorage('auth', {});
   const [landmarks, setLandmarks] = useState([]);
 
-  const isAuth = user?._id ? true : false
+  const isAuth = user?._id ? true : false;
 
   const userLogin = (authData) => {
     setAuth(authData);
@@ -41,7 +41,7 @@ function App() {
       <div>
         <Header />
 
-        <LandmarkContext.Provider value={{ landmarks, setLandmarks}}>
+        <LandmarkContext.Provider value={{ landmarks, setLandmarks }}>
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
@@ -67,6 +67,7 @@ function App() {
             </Routes>
           </main>
         </LandmarkContext.Provider>
+
       </div>
     </AuthContext.Provider>
   );
