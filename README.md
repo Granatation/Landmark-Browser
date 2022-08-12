@@ -26,7 +26,7 @@ To run this project, in the project directory, you should run:
 
 ```
 $ cd ./client
-$ npm init --y
+$ npm i
 $ npm start
 ```
 Which opens the app at http://localhost:3000 in your browser.
@@ -34,7 +34,7 @@ However it won't work unless the server is listening, so in the project director
 
 ```
 $ cd ./server
-$ npm init --y
+$ npm i
 $ npm start
 ```
 
